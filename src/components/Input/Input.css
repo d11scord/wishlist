@@ -5,6 +5,8 @@
   border: solid 1px #dddddd;
   background-color: #ffffff;
   padding: 0 12pt;
+  color: #595959;
+  font-size: 1.1em;
 }
 
 .input:focus{

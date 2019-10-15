@@ -1,0 +1,18 @@
+.deleteBtn{
+    padding: 0.8rem;
+    border: none;
+    border-radius: 25px;
+    background-image: linear-gradient(79deg, #e0fffd, #e7e1ff);
+    cursor: pointer;
+
+    margin-right: 2.6em;
+    width: 100%;
+}
+
+.deleteBtn:focus{
+    outline: none;
+}
+
+.deleteBtn:hover{
+    box-shadow: none;
+}

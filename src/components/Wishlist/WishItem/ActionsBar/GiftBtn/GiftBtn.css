@@ -1,0 +1,20 @@
+.giftBtn{
+    width: 2.6em;
+    height: 2.6em;
+    border: none;
+    border-radius: 50%;
+    background-image: linear-gradient(225deg, #ff0045, #ff9890);
+    cursor: help;
+    text-align: center;
+    float: right;
+}
+
+.giftBtn img{
+    width: 1.5em;
+    height: 1.5em;
+    vertical-align: middle;
+}
+
+.giftBtn:focus{
+    outline: none;
+}

@@ -12,7 +12,7 @@ class WishItem extends React.Component{
                     className="photo"
                     alt={this.props.product.name}
                 />
-                <p className="title">{this.props.product.name}</p>
+                <p className="title">{this.props.product.title}</p>
                 <p className="price">{this.props.product.price}</p>
                 <p className="description">{this.props.product.description}</p>
                 <ActionsBar className="actionBar"/>

@@ -8,13 +8,13 @@ class WishItem extends React.Component{
         return(
             <div className="wishItem col-md-3 col-12 ">
                 <img
-                    src="https://static.re-store.ru/upload/iblock/a86/a865178893dca89662f589c8d3cf9cf0.jpg"
-                    alt="item photo"
+                    src={process.env.PUBLIC_URL + this.props.product.img}
                     className="photo"
+                    alt={this.props.product.name}
                 />
-                <p className="title">iPhone XR 256GB</p>
-                <p className="price">70 000 ₽</p>
-                <p className="description">Мобильный телефон Apple iPhone XR 256GB (желтый)</p>
+                <p className="title">{this.props.product.name}</p>
+                <p className="price">{this.props.product.price}</p>
+                <p className="description">{this.props.product.description}</p>
                 <ActionsBar className="actionBar"/>
             </div>
         )

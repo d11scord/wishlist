@@ -14,5 +14,11 @@
 }
 
 .deleteBtn:hover{
-    box-shadow: none;
+    background-color: #e0fffd;
+    background-image: none;
+}
+
+.deleteBtn:active{
+    background-color: #e7e1ff;
+    background-image: none;
 }

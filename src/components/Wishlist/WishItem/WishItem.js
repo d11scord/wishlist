@@ -6,7 +6,7 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 class WishItem extends React.Component{
     render() {
         return(
-            <div className="wishItem col-md-3 col-3">
+            <div className="wishItem col-md-3 col-12 ">
                 <img
                     src={process.env.PUBLIC_URL + this.props.product.img}
                     className="photo"

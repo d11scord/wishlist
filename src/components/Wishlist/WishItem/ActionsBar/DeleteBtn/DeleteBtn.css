@@ -4,9 +4,9 @@
     border-radius: 25px;
     background-image: linear-gradient(79deg, #e0fffd, #e7e1ff);
     cursor: pointer;
-
-    margin-right: 2.6em;
     width: 100%;
+    height: 100%;
+    display: inline-block;
 }
 
 .deleteBtn:focus{

@@ -2,8 +2,7 @@ import React from 'react';
 import Input from './../../components/Input/Input';
 import './Main.css'
 import Header from "../../components/Header";
-import Pending from "../../components/Pending";
-import WishItem from "../../components/Wishlist/WishItem";
+import Wishlist from "./../../components/Wishlist/Wishlist.js";
 
 
 class Main extends React.Component{
@@ -19,8 +18,7 @@ class Main extends React.Component{
                     <div>
                         <Input />
                     </div>
-                    {/*<Pending/>*/}
-                    <WishItem/><WishItem/><WishItem/>
+                    <Wishlist products={this.props.products}/>
                 </div>
             </div>
         )

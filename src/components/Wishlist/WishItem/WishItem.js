@@ -6,7 +6,7 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 class WishItem extends React.Component{
     render() {
         return(
-            <div className="wishItem col-md-3 col-3">
+            <div className="wishItem col-md-3 col-12 ">
                 <img
                     src="https://static.re-store.ru/upload/iblock/a86/a865178893dca89662f589c8d3cf9cf0.jpg"
                     alt="item photo"
@@ -15,7 +15,7 @@ class WishItem extends React.Component{
                 <p className="title">iPhone XR 256GB</p>
                 <p className="price">70 000 ₽</p>
                 <p className="description">Мобильный телефон Apple iPhone XR 256GB (желтый)</p>
-                <ActionsBar classNmae="actionBar"/>
+                <ActionsBar className="actionBar"/>
             </div>
         )
     }

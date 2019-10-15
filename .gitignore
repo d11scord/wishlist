@@ -61,3 +61,5 @@ typings/
 .next
 node_modules
 /build
+/node_modules
+/node_modules/

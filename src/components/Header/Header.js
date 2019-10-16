@@ -39,9 +39,9 @@ function DrawFriends(){
     return (
         <div className="friends-block">
             <div className="friends-avatars">
-                <Avatar/>
-                <Avatar/>
-                <Avatar/>
+                {/*<Avatar/>*/}
+                {/*<Avatar/>*/}
+                {/*<Avatar/>*/}
             </div>
             <span className="name">Мои друзья</span>
         </div>

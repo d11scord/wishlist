@@ -4,8 +4,8 @@ import './Avatar.css';
 class Avatar extends React.Component{
     render() {
         return (
-            <div className={"avatar"}>
-                <img src={process.env.PUBLIC_URL + '/img/avatar.png'} alt="Avatar"/>
+            <div >
+                <img src={process.env.PUBLIC_URL + '/img/avatar.png'} className="avatar" alt="Avatar"/>
             </div>
         )
     }

@@ -9,12 +9,12 @@ class WishItem extends React.Component{
             <div className="wishItem col-md-3 col-12 ">
                 <img
                     src={process.env.PUBLIC_URL + this.props.product.img}
-                    className="photo"
+                    className="productImg"
                     alt={this.props.product.name}
                 />
-                <p className="title">{this.props.product.title}</p>
-                <p className="price">{this.props.product.price}</p>
-                <p className="description">{this.props.product.description}</p>
+                <span className="title">{this.props.product.title}</span>
+                <span className="price">{this.props.product.price}</span>
+                <span className="description">{this.props.product.description}</span>
                 <ActionsBar className="actionBar"/>
             </div>
         )

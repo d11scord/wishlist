@@ -3,11 +3,10 @@
     height: 100px;
     border-radius: 50%;
     box-shadow: 0 3px 9px 0 rgba(0, 0, 0, 0.15);
-    display: block;
+    vertical-align: middle;
 }
 
 .name{
-    font-family: SFUIDisplay;
     font-size: 25px;
     font-weight: normal;
     font-style: normal;
@@ -20,6 +19,6 @@
     display: inline-block;
 }
 
-.searchProfile p, .searchProfile button{
+.searchProfile span, .searchProfile button{
     display: block;
 }

@@ -30,7 +30,7 @@ function DrawMe() {
     return (
         <div className="my-profile-block">
             <Avatar/>
-            <span className="name">Юля Бородкина</span>
+            <span style={{display: "contents"}} className="name">Юля Бородкина</span>
         </div>
     )
 }

@@ -5,11 +5,20 @@ import User from "../../components/User";
 import './FriendPage.css'
 
 class FriendPage extends React.Component{
+    constructor(props){
+        super(props);
+        this.state = {
+            friendsWish: [],
+            myGifts: [],
+            isMyGifts: true,
+        }
+    }
+
     render(){
         return(
             <div>
                 <Header />
-                <User user={this.props.user}/>
+                <User type={"friendPage"} user={this.props.user}/>
                 <Wishlist products={this.props.products}/>
             </div>
         )

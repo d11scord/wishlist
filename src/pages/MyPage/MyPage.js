@@ -9,7 +9,7 @@ class MyPage extends React.Component{
         return(
             <div>
                 <Header />
-                <User me={this.props.me}/>
+                <User user={this.props.user}/>
                 <Wishlist products={this.props.products}/>
             </div>
         )

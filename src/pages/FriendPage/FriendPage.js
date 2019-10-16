@@ -9,7 +9,7 @@ class FriendPage extends React.Component{
         return(
             <div>
                 <Header />
-                <User friend={this.props.friend}/>
+                <User user={this.props.user}/>
                 <Wishlist products={this.props.products}/>
             </div>
         )

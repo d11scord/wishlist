@@ -21,21 +21,21 @@
 .my-profile-block .name, .friends-block .name{
     font-size: 14pt;
     font-family: "Calibri Light", monospace;
-    vertical-align: 50%;
-    margin-left: 10pt;
 }
 
-.my-profile-block{}
+.my-profile-block{
+    display: inline-flex;
+}
 .friends-block{}
 
-.name, .friends-avatars, .small-avatar, .avatar{
-    display: inline-block;
-}
+/*.name, .friends-avatars, .small-avatar, .avatar{*/
+/*    display: flex;*/
+/*}*/
 
-.friends-avatars .avatar{
-    display: inline-block;
-    margin-left: -15%;
-}
+/*.friends-avatars .avatar{*/
+/*    display: inline-block;*/
+/*    margin-left: -15%;*/
+/*}*/
 
 .friends-avatars{
     margin-left: 15%;

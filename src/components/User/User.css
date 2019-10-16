@@ -14,3 +14,11 @@
     line-height: normal;
     letter-spacing: normal;
 }
+
+.myProfile{
+    display: inline-block;
+}
+
+.myProfile span, .myProfile button{
+    display: block;
+}

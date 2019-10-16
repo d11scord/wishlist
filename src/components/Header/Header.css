@@ -29,7 +29,7 @@
 .friends-block{}
 
 .name, .friends-avatars, .small-avatar, .avatar{
-    display: inline-block;
+    display: flex;
 }
 
 .friends-avatars .avatar{

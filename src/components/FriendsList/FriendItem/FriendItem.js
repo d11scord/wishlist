@@ -21,7 +21,7 @@ class FriendItem extends React.Component {
     render(){
         return(
             <div className="row justify-content-center">
-                <div className="col-4" style={{padding: 15 + "pt", display: "inline-flex"}}>
+                <div className="col-md-auto" style={{padding: 15 + "pt", display: "inline-flex"}}>
                     <img
                         className="photo"
                         src={process.env.PUBLIC_URL + this.props.friend.img}

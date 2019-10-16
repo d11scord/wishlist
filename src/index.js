@@ -29,8 +29,8 @@ const ME =
 
 
 // ReactDOM.render(<Main products={PRODUCTS} />, document.getElementById('root'));
-ReactDOM.render(<Friends friends={FRIENDS} me={ME}/>, document.getElementById('root'));
-// ReactDOM.render(<MyPage me={ME} products={PRODUCTS}/>, document.getElementById('root'));
+// ReactDOM.render(<Friends friends={FRIENDS} me={ME}/>, document.getElementById('root'));
+ReactDOM.render(<MyPage me={ME} products={PRODUCTS}/>, document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.

@@ -2,7 +2,7 @@
   "name": "wishlist",
   "version": "0.1.0",
   "private": true,
-  "homepage": "http://d11scord.github.io/wishlist",
+  "homepage": "http://maximborodkin.github.io/wishlist-vk",
   "dependencies": {
     "bootstrap": "^4.3.1",
     "gh-pages": "^2.1.1",

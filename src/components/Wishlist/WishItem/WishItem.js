@@ -1,22 +1,48 @@
 import React from 'react';
+import styled from "styled-components";
 import ActionsBar from "./ActionsBar/ActionsBar";
 import './WishItem.css'
-import 'bootstrap/dist/css/bootstrap.min.css'
 
+const WishItemContainer = styled.div`
+    width = 33.333%;
+    padding: 30pt;
+    text-align: left;
+    word-break: break-all;
+    white-space: normal;
+    line-break: normal;
+`;
+
+const ProductImg = styled.img`
+    width: 12em;
+    margin: 0;
+    padding: 0;
+`;
+
+const Span = styled.span`
+    display: block;
+`;
+
+const Description = styled(Span)`
+    word-break: keep-all;
+    width: auto;
+    color: #929292;
+    white-space: normal;
+`;
+
+// className="col-md-4 col-12"
 class WishItem extends React.Component{
     render() {
         return(
-            <div style={{padding: "18pt"}} className="wishItem col-md-4 col-12">
-                <img
+            <WishItemContainer>
+                <ProductImg
                     src={process.env.PUBLIC_URL + this.props.product.img}
-                    className="productImg"
                     alt={this.props.product.name}
                 />
-                <span className="title">{this.props.product.title}</span>
-                <span className="price">{this.props.product.price}</span>
-                <span className="description">{this.props.product.description}</span>
+                <Span>{this.props.product.title}</Span>
+                <Span>{this.props.product.price}</Span>
+                <Description>{this.props.product.description}</Description>
                 <ActionsBar className="actionBar"/>
-            </div>
+            </WishItemContainer>
         )
     }
 }

@@ -17,8 +17,8 @@ class FriendPage extends React.Component{
     render(){
         return(
             <div>
-                <Header />
-                <User type={"friendPage"} user={this.props.user}/>
+                <Header inHeader/>
+                <User user={this.props.user}/>
                 <Wishlist products={this.props.products}/>
             </div>
         )

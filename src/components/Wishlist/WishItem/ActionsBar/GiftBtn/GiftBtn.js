@@ -1,13 +1,34 @@
 import React from 'react';
-import './GiftBtn.css';
+import styled from "styled-components";
+// import './GiftBtn.css';
 
+const GiftButton = styled.button`
+    border: none;
+    border-radius: 50%;
+    background-image: linear-gradient(225deg, #ff0045, #ff9890);
+    cursor: help;
+    float: right;
+    text-align: center;
+    display: inline-block;
+    
+    img {
+        width: 70%;
+        height: 70%;
+        vertical-align: middle;
+        margin: 0;
+    }   
+    
+    :focus {
+        outline: none;
+    }
+`;
 
 class GiftBtn extends React.Component{
     render() {
         return(
-            <button className="giftBtn">
+            <GiftButton>
                 <img src={process.env.PUBLIC_URL + '/img/giftbox.png'} alt="gift"/>
-            </button>
+            </GiftButton>
         )
     }
 }

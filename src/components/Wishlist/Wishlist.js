@@ -1,5 +1,11 @@
 import React from 'react';
+import styled from "styled-components";
 import WishItem from './WishItem/WishItem.js';
+
+const WishlistContainer = styled.div`
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+`;
 
 class Wishlist extends React.Component{
     render() {
@@ -8,9 +14,9 @@ class Wishlist extends React.Component{
             <WishItem product={product} key={idx}/>
         );
         return (
-            <div>
+            <WishlistContainer>
                 {wishList}
-            </div>
+            </WishlistContainer>
         );
     }
 }

@@ -1,51 +1,51 @@
 import React from 'react';
-import './Header.css';
-import Avatar from '../../components/User/Avatar';
+import styled from "styled-components";
+import Avatar from "../User/Avatar";
 
-class Header extends React.Component{
-    constructor(props){
-        super(props);
-        this.state = {
-            leftSide: null,
-            rightSide: null,
-            center: null,
-        };
-    }
+const Nav = styled.div`
+`;
+const NavHeader = styled.div`
+  max-width: 800px;
+  padding: 26px 20px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  margin: 0 auto;
+`;
+const NavLeft = styled.div`
+  width: 50%;
+  text-align: left;
+  svg {
+    margin-right: 20px;
+  }
+`;
+const NavRight = styled.div`
+  width: 50%;
+  text-align: right;
+`;
+const Link = styled.a`
+  padding-left: 15pt;
+`;
 
+
+class Header extends React.Component {
     render(){
-        return(
-            <div className="Header">
-                <div className="left">
-                    <DrawMe/>
-                </div>
-                <div className="right">
-                    <DrawFriends/>
-                </div>
-            </div>
-        )
+        return (
+            <Nav>
+                <NavHeader>
+                    <NavLeft>
+                        <Avatar inHeader/>
+                        <Link>Юля Бородкина</Link>
+                    </NavLeft>
+                    <NavRight>
+                        <Link href="#">
+                            Мои друзья
+                        </Link>
+                    </NavRight>
+                </NavHeader>
+            </Nav>
+        );
     }
-}
-
-function DrawMe() {
-    return (
-        <div className="my-profile-block">
-            <Avatar/>
-            <span style={{display: "contents"}} className="name">Юля Бородкина</span>
-        </div>
-    )
-}
-
-function DrawFriends(){
-    return (
-        <div className="friends-block">
-            <div className="friends-avatars">
-                {/*<Avatar/>*/}
-                {/*<Avatar/>*/}
-                {/*<Avatar/>*/}
-            </div>
-            <span className="name">Мои друзья</span>
-        </div>
-    )
 }
 
 export default Header;

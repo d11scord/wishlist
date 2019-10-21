@@ -6,7 +6,7 @@ class FriendsList extends React.Component {
     render(){
         const friends = this.props.user;
         const friendsList = friends.map((friend, idx) =>
-            <FriendItem user={friend} key={idx}/>
+            <FriendItem inSearch={this.props.inSearch} user={friend} key={idx}/>
         );
         return (
             <div>

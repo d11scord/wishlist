@@ -6,13 +6,21 @@ import FriendsList from './../../components/FriendsList/FriendsList.js';
 import DefaultBtn from './../../components/Wishlist/WishItem/ActionsBar/DefaultBtn/DefaultBtn.js';
 
 const FriendsContainer = styled.div`
-  align-items: center;
+  text-align: center;
 `;
+
 const FriendsWrapper = styled.div`
   display: flex;
   flex-direction: column;
 `;
-const FriendsLabel = styled.div``;
+
+const Label = styled.div`
+  font-family: "Candara Light", monospace;
+  margin-top: 48pt;
+  margin-bottom: 24pt;
+  font-size: 32pt;
+`;
+
 const Span = styled.span`
   font-size: 1em;
 `;
@@ -28,14 +36,14 @@ class Friends extends React.Component {
             <FriendsContainer>
                 <Header />
                 <FriendsWrapper>
-                    <FriendsLabel>
+                    <Label>
                         <Span>Мои друзья</Span>
                         <EmojiSpan>&#128540;</EmojiSpan>
-                    </FriendsLabel>
+                    </Label>
                     <Input/>
-                    <FriendsList user={this.props.user}/>
-                    <DefaultBtn/>
+                    <FriendsList inSearch user={this.props.user}/>
                 </FriendsWrapper>
+                <DefaultBtn text={"Показать ещё"}/>
             </FriendsContainer>
         )
     }

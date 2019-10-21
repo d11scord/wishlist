@@ -1,15 +1,15 @@
 import React from 'react';
-import DefaultBtn from './../../Wishlist/WishItem/ActionsBar/DefaultBtn/DefaultBtn.js';
-import './FriendItem.css';
 import 'bootstrap/dist/css/bootstrap.min.css'
 import User from "../../User";
+import DefaultBtn from './../../Wishlist/WishItem/ActionsBar/DefaultBtn/DefaultBtn.js';
+import './FriendItem.css';
 
 
 class FriendItem extends React.Component {
     render(){
         return(
-            <div className="row justify-content-center">
-                <User user={this.props.user}/>
+            <div>
+                <User inSearch={this.props.inSearch} user={this.props.user}/>
             </div>
         )
     }

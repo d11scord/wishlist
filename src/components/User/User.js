@@ -8,10 +8,10 @@ const ProfileContainer = styled.div`
   margin: 20pt auto;
 `;
 const ProfileDetails = styled.div`
-  display: flex;
+  display: ${props => props.inSearch ? "inline-flex" : "flex"};
 `;
 const ProfileDetailsLeft = styled.div`
-  width: 250pt;
+  margin-right: 2.7em;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -19,7 +19,7 @@ const ProfileDetailsLeft = styled.div`
 const ProfileDetailsRight = styled.div`
   display: flex;
   align-items: end;
-  justify-content: center;
+  justify-content: ${props => props.inSearch ? "space-around" : "center"};
   flex-direction: column;
 `;
 const ProfileDetailsUsername = styled.div`
@@ -29,7 +29,7 @@ const ProfileDetailsUsername = styled.div`
   font-size: 40px;
 `;
 const ProfileDetailsMeta = styled.div`
-  display: flex;
+  display: ${props => props.inSearch ? "none" : "flex"};
   justify-content: center;
 `;
 const ProfileDetailsName = styled.div`
@@ -53,15 +53,15 @@ class User extends React.Component {
     render() {
         return (
             <ProfileContainer>
-                <ProfileDetails>
-                    <ProfileDetailsLeft>
-                        <Avatar />
+                <ProfileDetails inSearch={this.props.inSearch}>
+                    <ProfileDetailsLeft inSearch={this.props.inSearch}>
+                        <Avatar inSearch={this.props.inSearch}/>
                     </ProfileDetailsLeft>
-                    <ProfileDetailsRight>
+                    <ProfileDetailsRight inSearch={this.props.inSearch}>
                         <ProfileDetailsUsername>
                             <h3>{this.props.user.name}</h3>
                         </ProfileDetailsUsername>
-                        <ProfileDetailsMeta>
+                        <ProfileDetailsMeta inSearch={this.props.inSearch}>
                             {/*Здесь будут линки*/}
                             <ParagraphText>
                                 Хочет получить &#128524;

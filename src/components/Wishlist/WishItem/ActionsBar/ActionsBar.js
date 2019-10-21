@@ -3,7 +3,6 @@ import styled from "styled-components";
 import DefaultBtn from "./DefaultBtn";
 import DeleteBtn from "./DeleteBtn";
 import GiftBtn from "./GiftBtn";
-import './ActionsBar.css'
 
 const ActionBar = styled.div`
     display: inline-flex;

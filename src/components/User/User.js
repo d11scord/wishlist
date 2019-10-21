@@ -2,17 +2,16 @@ import React from 'react';
 import styled from "styled-components";
 import Avatar from "./Avatar";
 import DefaultBtn from "../Wishlist/WishItem/ActionsBar/DefaultBtn";
-import './User.css';
 
 const ProfileContainer = styled.div`
   width: 100%;
-  margin: 20px auto;
+  margin: 20pt auto;
 `;
 const ProfileDetails = styled.div`
   display: flex;
 `;
 const ProfileDetailsLeft = styled.div`
-  width: 250px;
+  width: 250pt;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -37,19 +36,18 @@ const ProfileDetailsName = styled.div`
   text-align: left;
 `;
 const ParagraphText = styled.p`
-  margin-right: 25px;
+  margin-right: 25pt;
   color: #329eff;
-    
+
   :hover {
     text-decoration: none;
     color: #2a85d7;
   }
-  
+
   :active {
     color: #2168a8;
   }
 `;
-
 
 class User extends React.Component {
     render() {

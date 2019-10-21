@@ -43,17 +43,7 @@ export default function App() {
     );
 }
 
-function Home() {
-    return <h2>Home</h2>;
-}
-
-function About() {
-    return <h2>About</h2>;
-}
-
-function Users() {
-    return <h2>Users</h2>;
-}
+const ME = {img: '/img/avatar.png', name: 'Антон Чащин'};
 
 const PRODUCTS = [
     {img: '/img/iphone.png', title: 'iPhone XR 256GB', price: '70 000 ₽', description: 'Мобильный телефон Apple iPhone XR 256GB (желтый)'},

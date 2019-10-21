@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from "styled-components";
-// import './GiftBtn.css';
 
 const GiftButton = styled.button`
     border: none;
@@ -10,14 +9,14 @@ const GiftButton = styled.button`
     float: right;
     text-align: center;
     display: inline-block;
-    
+
     img {
         width: 70%;
         height: 70%;
         vertical-align: middle;
         margin: 0;
-    }   
-    
+    }
+
     :focus {
         outline: none;
     }

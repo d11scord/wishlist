@@ -5,8 +5,7 @@ import Avatar from "../User/Avatar";
 const Nav = styled.div`
 `;
 const NavHeader = styled.div`
-  max-width: 800px;
-  padding: 26px 20px;
+  padding: 26pt 20pt;
   width: 100%;
   display: flex;
   align-items: center;
@@ -16,7 +15,7 @@ const NavLeft = styled.div`
   width: 50%;
   text-align: left;
   svg {
-    margin-right: 20px;
+    margin-right: 20pt;
   }
 `;
 const NavRight = styled.div`
@@ -49,4 +48,3 @@ class Header extends React.Component {
 }
 
 export default Header;
-

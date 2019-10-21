@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from "styled-components";
 import ActionsBar from "./ActionsBar/ActionsBar";
-import './WishItem.css'
 
 const WishItemContainer = styled.div`
     width = 33.333%;
@@ -29,7 +28,6 @@ const Description = styled(Span)`
     white-space: normal;
 `;
 
-// className="col-md-4 col-12"
 class WishItem extends React.Component{
     render() {
         return(

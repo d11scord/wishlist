@@ -1,27 +1,42 @@
 import React from 'react';
-import FriendsList from './../../components/FriendsList/FriendsList.js';
+import styled from "styled-components";
 import Header from "../../components/Header";
-import DefaultBtn from './../../components/Wishlist/WishItem/ActionsBar/DefaultBtn/DefaultBtn.js';
-import './Friends.css';
-
 import Input from './../../components/Input/Input';
+import FriendsList from './../../components/FriendsList/FriendsList.js';
+import DefaultBtn from './../../components/Wishlist/WishItem/ActionsBar/DefaultBtn/DefaultBtn.js';
 
+const FriendsContainer = styled.div`
+  align-items: center;
+`;
+const FriendsWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+const FriendsLabel = styled.div``;
+const Span = styled.span`
+  font-size: 1em;
+`;
+
+const EmojiSpan = styled(Span)`
+  role="img";
+  aria-label="smiling face with heart-eyes";
+`;
 
 class Friends extends React.Component {
     render(){
         return(
-            <div className="friends">
+            <FriendsContainer>
                 <Header />
-                <div className="content-container">
-                    <div className="label">
-                        <span>Мои друзья</span>
-                        <span style={{fontSize: 1 + 'em'}} role="img" aria-label="smiling face with heart-eyes">&#128540;</span>
-                    </div>
+                <FriendsWrapper>
+                    <FriendsLabel>
+                        <Span>Мои друзья</Span>
+                        <EmojiSpan>&#128540;</EmojiSpan>
+                    </FriendsLabel>
                     <Input/>
                     <FriendsList user={this.props.user}/>
                     <DefaultBtn/>
-                </div>
-            </div>
+                </FriendsWrapper>
+            </FriendsContainer>
         )
     }
 }

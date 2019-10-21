@@ -1,8 +1,7 @@
 import React from 'react';
-import './MyPage.css'
 import Header from "../../components/Header";
-import Wishlist from "./../../components/Wishlist/Wishlist.js";
 import User from "../../components/User";
+import Wishlist from "./../../components/Wishlist/Wishlist.js";
 
 class MyPage extends React.Component{
     render(){

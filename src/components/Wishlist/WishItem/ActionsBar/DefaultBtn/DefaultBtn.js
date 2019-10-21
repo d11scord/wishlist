@@ -1,21 +1,17 @@
 import React from 'react';
 import styled from "styled-components";
 import Button from "../../../../../styles/styles";
-// import DeleteBtn from "../DeleteBtn";
-import './DefaultBtn.css';
-
-
 
 const DefaultButton = styled(Button)`
     background-image: linear-gradient(73deg, #7dc4ff, #6700ff);
     color: white;
     font-size: 14px;
     width: 100%;
-    
+
     :hover {
         background-image: linear-gradient(259deg, #7dc4ff, #7dc4ff);
     }
-    
+
     :active {
         background-color: #6700ff;
         background-image: none;

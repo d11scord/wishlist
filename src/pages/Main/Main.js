@@ -3,7 +3,6 @@ import styled from "styled-components";
 import Header from "../../components/Header";
 import Input from "../../components/Input";
 import Wishlist from "../../components/Wishlist";
-import './Main.css'
 
 const ContentContainer = styled.div`
     text-align: center;

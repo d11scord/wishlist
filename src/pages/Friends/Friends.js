@@ -3,7 +3,6 @@ import styled from "styled-components";
 import Header from "../../components/Header";
 import Input from './../../components/Input/Input';
 import FriendsList from "../../components/FriendsList";
-import DeleteBtn from "../../components/Wishlist/WishItem/ActionsBar/DeleteBtn";
 
 const FriendsContainer = styled.div`
   text-align: center;
@@ -25,10 +24,10 @@ const Span = styled.span`
   font-size: 1em;
 `;
 
-const EmojiSpan = styled(Span)`
-  role="img";
-  aria-label="smiling face with heart-eyes";
-`;
+// const EmojiSpan = styled(Span)`
+//   role="img";
+//   aria-label="smiling face with heart-eyes";
+// `;
 
 class Friends extends React.Component {
     render(){
@@ -38,12 +37,11 @@ class Friends extends React.Component {
                 <FriendsWrapper>
                     <Label>
                         <Span>Мои друзья</Span>
-                        <EmojiSpan>&#128540;</EmojiSpan>
+                        <span className="ec ec-stuck-out-tongue-winking-eye"></span>
                     </Label>
                     <Input searchPlaceholder={"Начни вводить имя друга"}/>
                     <FriendsList user={this.props.user}/>
                 </FriendsWrapper>
-                <DeleteBtn text={"Показать ещё"}/>
             </FriendsContainer>
         )
     }

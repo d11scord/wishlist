@@ -19,10 +19,10 @@ const Span = styled.span`
   font-size: 1em;
 `;
 
-const EmojiSpan = styled(Span)`
-  role="img";
-  aria-label="smiling face with heart-eyes";
-`;
+// const EmojiSpan = styled(Span)`
+//   role="img";
+//   aria-label="smiling face with heart-eyes";
+// `;
 
 class Main extends React.Component{
     render(){
@@ -32,7 +32,7 @@ class Main extends React.Component{
                 <ContentContainer>
                     <Label>
                         <Span>Вишлист</Span>
-                        <EmojiSpan>&#128525;</EmojiSpan>
+                        <span className="ec ec-heart-eyes"></span>
                     </Label>
                     <div>
                         <Input searchPlaceholder={"Введите название товара"}/>

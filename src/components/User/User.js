@@ -65,10 +65,10 @@ class User extends React.Component {
                         <ProfileDetailsMeta inSearch={this.props.inSearch}>
                             {/*Здесь будут линки*/}
                             <ParagraphText>
-                                Хочет получить &#128524;
+                                Хочет получить <span className="ec ec-relieved"></span>
                             </ParagraphText>
                             <ParagraphText>
-                                Хочет подарить &#128526;
+                                Хочет подарить <span className="ec ec-sunglasses"></span>
                             </ParagraphText>
                             {/*Здесь будут линки*/}
                         </ProfileDetailsMeta>

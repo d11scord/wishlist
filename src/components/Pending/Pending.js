@@ -11,4 +11,4 @@ class Pending extends React.Component{
     }
 }
 
-export default Pending
+export default Pending;

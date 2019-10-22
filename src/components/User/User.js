@@ -5,13 +5,12 @@ import DefaultBtn from "../Wishlist/WishItem/ActionsBar/DefaultBtn";
 
 const ProfileContainer = styled.div`
   width: 100%;
-  margin: 20pt auto;
 `;
 const ProfileDetails = styled.div`
   display: ${props => props.inSearch ? "inline-flex" : "flex"};
 `;
 const ProfileDetailsLeft = styled.div`
-  margin-right: 2.7em;
+  margin: 15pt 1.5em;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -19,7 +18,7 @@ const ProfileDetailsLeft = styled.div`
 const ProfileDetailsRight = styled.div`
   display: flex;
   align-items: end;
-  justify-content: ${props => props.inSearch ? "space-around" : "center"};
+  justify-content: ${props => props.inSearch ? "space-evenly" : "center"};
   flex-direction: column;
 `;
 const ProfileDetailsUsername = styled.div`
@@ -27,13 +26,15 @@ const ProfileDetailsUsername = styled.div`
   align-items: center;
   justify-content: center;
   font-size: 40px;
+  flex-grow: ${props => props.inSearch ? "1" : "0"};
 `;
 const ProfileDetailsMeta = styled.div`
   display: ${props => props.inSearch ? "none" : "flex"};
   justify-content: center;
 `;
-const ProfileDetailsName = styled.div`
+const ProfileDetailsBtn = styled.div`
   text-align: left;
+  flex-grow: ${props => props.inSearch ? "2" : "0"};
 `;
 const ParagraphText = styled.p`
   margin-right: 25pt;
@@ -55,10 +56,10 @@ class User extends React.Component {
             <ProfileContainer>
                 <ProfileDetails inSearch={this.props.inSearch}>
                     <ProfileDetailsLeft inSearch={this.props.inSearch}>
-                        <Avatar inSearch={this.props.inSearch}/>
+                        <Avatar avatarWidth={this.props.avatarWidth}/>
                     </ProfileDetailsLeft>
                     <ProfileDetailsRight inSearch={this.props.inSearch}>
-                        <ProfileDetailsUsername>
+                        <ProfileDetailsUsername inSearch>
                             <h3>{this.props.user.name}</h3>
                         </ProfileDetailsUsername>
                         <ProfileDetailsMeta inSearch={this.props.inSearch}>
@@ -71,9 +72,9 @@ class User extends React.Component {
                             </ParagraphText>
                             {/*Здесь будут линки*/}
                         </ProfileDetailsMeta>
-                        <ProfileDetailsName>
-                            <DefaultBtn/>
-                        </ProfileDetailsName>
+                        <ProfileDetailsBtn inSearch>
+                            <DefaultBtn inSearch/>
+                        </ProfileDetailsBtn>
                     </ProfileDetailsRight>
                 </ProfileDetails>
             </ProfileContainer>

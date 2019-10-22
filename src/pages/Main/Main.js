@@ -35,7 +35,7 @@ class Main extends React.Component{
                         <EmojiSpan>&#128525;</EmojiSpan>
                     </Label>
                     <div>
-                        <Input />
+                        <Input searchPlaceholder={"Введите название товара"}/>
                     </div>
                     <Wishlist products={this.props.products}/>
                 </ContentContainer>

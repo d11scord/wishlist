@@ -1,6 +1,20 @@
 import React from 'react';
-import './Input.css'
+import styled from "styled-components";
 
+const InputContainer = styled.input`
+  width: 500px;
+  height: 50px;
+  border-radius: 25px;
+  border: solid 1px #dddddd;
+  background-color: #ffffff;
+  padding: 0 12pt;
+  color: #595959;
+  font-size: 1.1em;
+
+  :focus{
+    outline: none;
+`;
+//
 class Input extends React.Component{
 
     constructor(props) {
@@ -23,11 +37,16 @@ class Input extends React.Component{
     render(){
         return(
             <div>
-                <input className={"input"} type={"text"} onChange={this.handleChange} placeholder={"Введите название товара"} onKeyDown={this.keyPress} value={this.state.value}/>
+                <InputContainer
+                    placeholder={this.props.searchPlaceholder}
+                    onChange={this.handleChange}
+                    onKeyDown={this.keyPress}
+                    value={this.state.value}
+                />
                 <p>{this.state.value}</p>
             </div>
         )
     }
 }
 
-export default Input
+export default Input;

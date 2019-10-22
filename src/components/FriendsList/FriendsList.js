@@ -1,12 +1,11 @@
 import React from 'react';
 import FriendItem from './FriendItem/FriendItem.js';
 
-
 class FriendsList extends React.Component {
     render(){
         const friends = this.props.user;
         const friendsList = friends.map((friend, idx) =>
-            <FriendItem inSearch={this.props.inSearch} user={friend} key={idx}/>
+            <FriendItem user={friend} key={idx}/>
         );
         return (
             <div>

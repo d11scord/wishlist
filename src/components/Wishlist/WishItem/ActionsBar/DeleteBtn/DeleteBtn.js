@@ -5,8 +5,6 @@ import Button from "../../../../../styles/styles";
 const DeleteButton = styled(Button)`
     background-image: linear-gradient(79deg, #e0fffd, #e7e1ff);
     display: inline-block;
-    width: 100%;
-    height: 100%;
 
     :hover {
         background-color: #e0fffd;
@@ -20,18 +18,14 @@ const DeleteButton = styled(Button)`
 `;
 
 class DeleteBtn extends React.Component{
-    constructor(props){
-        super(props);
-        this.state = {
-            delete: 'Удалить',
-            ok: 'Понятно',
-        };
-    }
+    static defaultProps = {
+        text: "Удалить",
+    };
 
     render() {
         return(
             <DeleteButton>
-                {this.state.delete}
+                {this.props.text}
             </DeleteButton>
         )
     }

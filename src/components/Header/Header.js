@@ -26,14 +26,13 @@ const Link = styled.a`
   padding-left: 15pt;
 `;
 
-
 class Header extends React.Component {
     render(){
         return (
             <Nav>
                 <NavHeader>
                     <NavLeft>
-                        <Avatar inHeader/>
+                        <Avatar avatarWidth="40px"/>
                         <Link>Юля Бородкина</Link>
                     </NavLeft>
                     <NavRight>

@@ -13,7 +13,7 @@ class Wishlist extends React.Component{
         if (this.props.products.length) {
             const items = this.props.products;
             const wishList = items.map((product, idx) =>
-                <WishItem product={product} key={idx}/>
+                <WishItem isMine={this.props.isMine} text={this.props.text} product={product} key={idx}/>
             );
             return (
                 <WishlistContainer>

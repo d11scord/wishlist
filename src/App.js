@@ -1,4 +1,5 @@
 import React from "react";
+import 'bootstrap/dist/css/bootstrap.min.css';
 import {
     BrowserRouter as Router,
     Switch,
@@ -8,6 +9,7 @@ import {
 import Main from "./pages/Main";
 import Friends from "./pages/Friends";
 import FriendPage from "./pages/FriendPage";
+import MyPage from './pages/MyPage';
 
 export default function App() {
     return (
@@ -16,13 +18,16 @@ export default function App() {
                 <nav>
                     <ul>
                         <li>
-                            <Link exact to="/">Home</Link>
+                            <Link exact to="/">Main</Link>
                         </li>
                         <li>
-                            <Link to="/friends-list">Friends</Link>
+                            <Link to="/friends-list">Search friends</Link>
                         </li>
                         <li>
                             <Link to="/friend">Fiend page</Link>
+                        </li>
+                        <li>
+                            <Link to="/mypage">My page</Link>
                         </li>
                     </ul>
                 </nav>
@@ -33,6 +38,9 @@ export default function App() {
                     </Route>
                     <Route path="/friend">
                         <FriendPage user={FRIENDS[0]} products={PRODUCTS} />
+                    </Route>
+                    <Route path="/mypage">
+                        <MyPage user={ME} products={PRODUCTS} />
                     </Route>
                     <Route path="/">
                         <Main products={PRODUCTS} />

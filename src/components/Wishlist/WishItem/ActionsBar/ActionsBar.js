@@ -5,18 +5,26 @@ import DeleteBtn from "./DeleteBtn";
 import GiftBtn from "./GiftBtn";
 
 const ActionBar = styled.div`
-    display: inline-flex;
-    width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding-top: 0.5em;
 `;
 
 class ActionsBar extends React.Component{
     render() {
-        return(
-            <ActionBar>
-                <DefaultBtn/>
-                {/*<DeleteBtn/><GiftBtn/>*/}
-            </ActionBar>
-        )
+        if (this.props.isMine) {
+            return(
+                <ActionBar>
+                    <DeleteBtn text={this.props.text}/><GiftBtn/>
+                </ActionBar>
+            );
+        } else {
+            return(
+                <ActionBar>
+                    <DefaultBtn text={this.props.text}/>
+                </ActionBar>
+            )
+        }
     }
 }
 

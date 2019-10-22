@@ -1,12 +1,13 @@
 import React from 'react';
 import styled from "styled-components";
-import Button from "../../../../../styles/styles";
+import { Button } from "../../../../../styles/styles";
 
 const DefaultButton = styled(Button)`
-  padding: ${props => props.inSearch ? "0.5rem" : "0.8rem"};
+  padding: ${props => props.inSearch ? "0.5rem" : "0.8rem"} ${props => props.inProfile};
   background-image: linear-gradient(73deg, #7dc4ff, #6700ff);
   color: white;
   font-size: 14px;
+  flex-grow: 1;
 
   :hover {
       background-image: linear-gradient(259deg, #7dc4ff, #7dc4ff);
@@ -20,12 +21,12 @@ const DefaultButton = styled(Button)`
 
 class DefaultBtn extends React.Component{
     static defaultProps = {
-        text: "Узнать что подарить",
+        text: "Добавить в избранное",
     };
 
     render() {
         return(
-            <DefaultButton inSearch={this.props.inSearch}>
+            <DefaultButton inProfile={this.props.inProfile} inSearch={this.props.inSearch}>
                 {this.props.text}
             </DefaultButton>
         )

@@ -1,15 +1,24 @@
 import React from 'react';
 import Header from "../../components/Header";
-import User from "../../components/User";
 import Wishlist from "../../components/Wishlist";
+import User from "../../components/User";
 
 class MyPage extends React.Component{
     render(){
         return(
             <div>
-                <Header />
-                <User user={this.props.user}/>
-                <Wishlist products={this.props.products}/>
+                <Header/>
+                <User
+                    wantText={"Хочу"}
+                    text={"Поделиться"}
+                    avatarWidth="150px"
+                    user={this.props.user}
+                />
+                <Wishlist
+                    isMine
+                    text={"Не подарю :с"}
+                    products={this.props.products}
+                />
             </div>
         )
     }

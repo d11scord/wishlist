@@ -8,8 +8,16 @@ class FriendPage extends React.Component{
         return(
             <div>
                 <Header/>
-                <User avatarWidth="150px" user={this.props.user}/>
-                <Wishlist products={this.props.products}/>
+                <User
+                    wantText={"Хочет"}
+                    text={"Поделиться"}
+                    avatarWidth="150px"
+                    user={this.props.user}
+                />
+                <Wishlist
+                    text={"Подарю"}
+                    products={this.props.products}
+                />
             </div>
         )
     }

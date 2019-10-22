@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from "styled-components";
 import Avatar from "../User/Avatar";
+import { Link } from './../../styles/styles.js';
 
 const Nav = styled.div`
 `;
@@ -22,7 +23,7 @@ const NavRight = styled.div`
   width: 50%;
   text-align: right;
 `;
-const Link = styled.a`
+const HeaderLink = styled(Link)`
   padding-left: 15pt;
 `;
 
@@ -33,7 +34,7 @@ class Header extends React.Component {
                 <NavHeader>
                     <NavLeft>
                         <Avatar avatarWidth="40px"/>
-                        <Link>Юля Бородкина</Link>
+                        <HeaderLink>Юля Бородкина</HeaderLink>
                     </NavLeft>
                     <NavRight>
                         <Link href="#">

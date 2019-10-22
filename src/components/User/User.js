@@ -2,6 +2,7 @@ import React from 'react';
 import styled from "styled-components";
 import Avatar from "./Avatar";
 import DefaultBtn from "../Wishlist/WishItem/ActionsBar/DefaultBtn";
+import { Link } from './../../styles/styles.js';
 
 const ProfileContainer = styled.div`
   width: 100%;
@@ -31,23 +32,14 @@ const ProfileDetailsUsername = styled.div`
 const ProfileDetailsMeta = styled.div`
   display: ${props => props.inSearch ? "none" : "flex"};
   justify-content: center;
+  flex-grow: 1;
 `;
 const ProfileDetailsBtn = styled.div`
   text-align: left;
   flex-grow: ${props => props.inSearch ? "2" : "0"};
 `;
-const ParagraphText = styled.p`
+const UserLink = styled(Link)`
   margin-right: 25pt;
-  color: #329eff;
-
-  :hover {
-    text-decoration: none;
-    color: #2a85d7;
-  }
-
-  :active {
-    color: #2168a8;
-  }
 `;
 
 class User extends React.Component {
@@ -63,17 +55,17 @@ class User extends React.Component {
                             <h3>{this.props.user.name}</h3>
                         </ProfileDetailsUsername>
                         <ProfileDetailsMeta inSearch={this.props.inSearch}>
-                            {/*Здесь будут линки*/}
-                            <ParagraphText>
-                                Хочет получить <span className="ec ec-relieved"></span>
-                            </ParagraphText>
-                            <ParagraphText>
-                                Хочет подарить <span className="ec ec-sunglasses"></span>
-                            </ParagraphText>
-                            {/*Здесь будут линки*/}
+                            <UserLink href="#">
+                                {this.props.wantText} получить
+                                <span className="ec ec-relieved"></span>
+                            </UserLink>
+                            <UserLink href="#">
+                                {this.props.wantText} подарить
+                                <span className="ec ec-sunglasses"></span>
+                            </UserLink>
                         </ProfileDetailsMeta>
                         <ProfileDetailsBtn inSearch>
-                            <DefaultBtn inSearch/>
+                            <DefaultBtn inProfile={"1.5em"} text={this.props.text} inSearch/>
                         </ProfileDetailsBtn>
                     </ProfileDetailsRight>
                 </ProfileDetails>

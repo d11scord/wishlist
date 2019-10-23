@@ -17,7 +17,7 @@ const Button = styled.button`
   }
 `;
 
-const Link = styled.a`
+const ColoredLink = styled.a`
   font-size: 15px;
   color: #329eff;
 
@@ -42,5 +42,5 @@ export {
     ContentContainer,
     Button,
     Label,
-    Link,
+    ColoredLink,
 };

@@ -14,14 +14,20 @@ class Friends extends React.Component {
     render(){
         return(
             <ContentContainer>
-                <Header />
+                <Header
+                    isFriends
+                    user={this.props.user}
+                    textRight={"Вернуться к поиску"}
+                    linkToLeft={"/mypage"}
+                    linkToRight={"/"}
+                />
                 <FriendsWrapper>
                     <Label>
                         <span>Мои друзья</span>
                         <span className="ec ec-stuck-out-tongue-winking-eye"></span>
                     </Label>
                     <Input searchPlaceholder={"Начни вводить имя друга"}/>
-                    <FriendsList text={"Узнать что подарить"} user={this.props.user}/>
+                    <FriendsList text={"Узнать что подарить"} friends={this.props.friends}/>
                 </FriendsWrapper>
             </ContentContainer>
         )

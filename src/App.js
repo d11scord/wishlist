@@ -21,7 +21,7 @@ export default function App() {
                             <Link exact to="/">Main</Link>
                         </li>
                         <li>
-                            <Link to="/friends-list">Search friends</Link>
+                            <Link to="/friendslist">Search friends</Link>
                         </li>
                         <li>
                             <Link to="/friend">Fiend page</Link>
@@ -33,8 +33,8 @@ export default function App() {
                 </nav>
 
                 <Switch>
-                    <Route path="/friends-list">
-                        <Friends user={FRIENDS} />
+                    <Route path="/friendslist">
+                        <Friends user={ME} friends={FRIENDS} />
                     </Route>
                     <Route path="/friend">
                         <FriendPage user={FRIENDS[0]} products={PRODUCTS} />
@@ -43,7 +43,7 @@ export default function App() {
                         <MyPage user={ME} products={PRODUCTS} />
                     </Route>
                     <Route path="/">
-                        <Main products={PRODUCTS} />
+                        <Main user={ME} products={PRODUCTS} />
                     </Route>
                 </Switch>
             </div>

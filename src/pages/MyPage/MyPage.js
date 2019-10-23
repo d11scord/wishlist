@@ -7,7 +7,14 @@ class MyPage extends React.Component{
     render(){
         return(
             <div>
-                <Header/>
+                <Header
+                    isMyPage
+                    user={this.props.user}
+                    textLeft={"Вернуться к поиску"}
+                    textRight={"Мои друзья"}
+                    linkToLeft={"/"}
+                    linkToRight={"/friendslist"}
+                />
                 <User
                     wantText={"Хочу"}
                     text={"Поделиться"}

@@ -1,7 +1,12 @@
 import React from 'react';
 import styled from "styled-components";
 import Avatar from "../User/Avatar";
-import { Link } from './../../styles/styles.js';
+import { ColoredLink } from './../../styles/styles.js';
+import {
+    Switch,
+    Route,
+    Link
+} from "react-router-dom";
 
 const Nav = styled.div`
 `;
@@ -23,8 +28,8 @@ const NavRight = styled.div`
   width: 50%;
   text-align: right;
 `;
-const HeaderLink = styled(Link)`
-  padding-left: 15pt;
+const HeaderLink = styled(ColoredLink)`
+  padding-left: ${props => props.isMyPage ? "0pt" : "15pt"};
 `;
 
 class Header extends React.Component {
@@ -33,12 +38,18 @@ class Header extends React.Component {
             <Nav>
                 <NavHeader>
                     <NavLeft>
-                        <Avatar avatarWidth="40px"/>
-                        <HeaderLink>Юля Бородкина</HeaderLink>
+                        <Link to={this.props.linkToLeft}>
+                            <Avatar isMyPage={this.props.isMyPage} avatarWidth="40px"/>
+                            <HeaderLink isMyPage={this.props.isMyPage}>
+                                {this.props.textLeft || this.props.user.name}
+                            </HeaderLink>
+                        </Link>
                     </NavLeft>
                     <NavRight>
-                        <Link href="#">
-                            Мои друзья
+                        <Link to={this.props.linkToRight}>
+                            <ColoredLink>
+                                {this.props.textRight || this.props.user.name}
+                            </ColoredLink>
                         </Link>
                     </NavRight>
                 </NavHeader>

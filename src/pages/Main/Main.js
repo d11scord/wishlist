@@ -8,7 +8,12 @@ class Main extends React.Component{
     render(){
         return(
             <div>
-                <Header />
+                <Header
+                    user={this.props.user}
+                    linkToRight={"/friendslist"}
+                    textRight={"Мои друзья"}
+                    linkToLeft={"/mypage"}
+                />
                 <ContentContainer>
                     <Label>
                         <span>Вишлист</span>

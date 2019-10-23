@@ -5,8 +5,8 @@ import DeleteBtn from "../Wishlist/WishItem/ActionsBar/DeleteBtn";
 
 class FriendsList extends React.Component {
     render(){
-        if (this.props.user.length) {
-            const friends = this.props.user;
+        if (this.props.friends.length) {
+            const friends = this.props.friends;
             const friendsList = friends.map((friend, idx) =>
                 <FriendItem text={this.props.text} user={friend} key={idx}/>
             );

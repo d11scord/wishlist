@@ -2,7 +2,7 @@ import React from 'react';
 import styled from "styled-components";
 import Avatar from "./Avatar";
 import DefaultBtn from "../Wishlist/WishItem/ActionsBar/DefaultBtn";
-import { Link } from './../../styles/styles.js';
+import { ColoredLink } from './../../styles/styles.js';
 
 const ProfileContainer = styled.div`
   width: 100%;
@@ -38,7 +38,7 @@ const ProfileDetailsBtn = styled.div`
   text-align: left;
   flex-grow: ${props => props.inSearch ? "2" : "0"};
 `;
-const UserLink = styled(Link)`
+const UserLink = styled(ColoredLink)`
   margin-right: 25pt;
 `;
 

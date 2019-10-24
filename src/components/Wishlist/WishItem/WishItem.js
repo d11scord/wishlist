@@ -4,15 +4,19 @@ import ActionsBar from "./ActionsBar/ActionsBar";
 
 const WishItemContainer = styled.div`
   width = 33.333%;
-  padding: 20pt 30pt;
+  padding: 20pt 19pt;
   text-align: left;
   word-break: break-all;
   white-space: normal;
   line-break: normal;
 `;
 
+const SpanContainer = styled.div`
+
+`;
+
 const ProductImg = styled.img`
-  width: 12em;
+  width: 11em;
   margin: 0;
   padding: 0;
 `;
@@ -47,10 +51,12 @@ class WishItem extends React.Component{
                     src={process.env.PUBLIC_URL + this.props.product.img}
                     alt={this.props.product.name}
                 />
-                <NameSpan>{this.props.product.title}</NameSpan>
-                <PriceSpan>{this.props.product.price}</PriceSpan>
-                <Description>{this.props.product.description}</Description>
-                <ActionsBar isMine={this.props.isMine} text={this.props.text} className="actionBar"/>
+                <SpanContainer>
+                    <NameSpan>{this.props.product.title}</NameSpan>
+                    <PriceSpan>{this.props.product.price}</PriceSpan>
+                    <Description>{this.props.product.description}</Description>
+                    <ActionsBar isMine={this.props.isMine} text={this.props.text} className="actionBar"/>
+                </SpanContainer>
             </WishItemContainer>
         )
     }

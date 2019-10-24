@@ -33,8 +33,8 @@ const ColoredLink = styled.a`
 
 const Label = styled.div`
   font-family: "Candara Light", monospace;
-  margin-top: 48pt;
-  margin-bottom: 24pt;
+  margin-top: 0.3em;
+  margin-bottom: 0.6em;
   font-size: 32pt;
 `;
 

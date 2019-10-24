@@ -1,6 +1,10 @@
 import React from 'react';
 import styled from "styled-components";
 
+const Container = styled.div`
+  padding-bottom: 3em;
+`;
+
 const InputContainer = styled.input`
   width: 500px;
   height: 50px;
@@ -36,15 +40,14 @@ class Input extends React.Component{
 
     render(){
         return(
-            <div>
+            <Container>
                 <InputContainer
                     placeholder={this.props.searchPlaceholder}
                     onChange={this.handleChange}
                     onKeyDown={this.keyPress}
                     value={this.state.value}
                 />
-                <p>{this.state.value}</p>
-            </div>
+            </Container>
         )
     }
 }

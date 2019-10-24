@@ -2,16 +2,12 @@ import React from 'react';
 import styled from "styled-components";
 import Avatar from "../User/Avatar";
 import { ColoredLink } from './../../styles/styles.js';
-import {
-    Switch,
-    Route,
-    Link
-} from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const Nav = styled.div`
 `;
 const NavHeader = styled.div`
-  padding: 26pt 20pt;
+  padding: 23.5pt 20pt 10pt;
   width: 100%;
   display: flex;
   align-items: center;

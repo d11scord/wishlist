@@ -3,11 +3,16 @@ import Header from "../../components/Header";
 import Input from "../../components/Input";
 import Wishlist from "../../components/Wishlist";
 import { ContentContainer, Label } from './../../styles/styles.js';
+import styled from "styled-components";
+
+const Content = styled.div`
+  padding: 0em 0em 1.5em;
+`;
 
 class Main extends React.Component{
     render(){
         return(
-            <div>
+            <Content>
                 <Header
                     user={this.props.user}
                     linkToRight={"/friendslist"}
@@ -19,12 +24,10 @@ class Main extends React.Component{
                         <span>Вишлист</span>
                         <span className="ec ec-heart-eyes"></span>
                     </Label>
-                    <div>
-                        <Input searchPlaceholder={"Введите название товара"}/>
-                    </div>
+                    <Input searchPlaceholder={"Введите название товара"}/>
                     <Wishlist products={this.props.products}/>
                 </ContentContainer>
-            </div>
+            </Content>
         )
     }
 }

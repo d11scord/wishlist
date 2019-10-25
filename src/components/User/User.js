@@ -3,6 +3,7 @@ import styled from "styled-components";
 import Avatar from "./Avatar";
 import DefaultBtn from "../Wishlist/WishItem/ActionsBar/DefaultBtn";
 import { ColoredLink } from './../../styles/styles.js';
+import { Link } from "react-router-dom";
 
 const ProfileContainer = styled.div`
   width: 100%;
@@ -55,14 +56,14 @@ class User extends React.Component {
                             <h3>{this.props.user.name}</h3>
                         </ProfileDetailsUsername>
                         <ProfileDetailsMeta inSearch={this.props.inSearch}>
-                            <UserLink href="#">
+                            <Link to="/myfavorites">
                                 {this.props.wantText} получить
                                 <span className="ec ec-relieved"></span>
-                            </UserLink>
-                            <UserLink href="#">
+                            </Link>
+                            <Link to="/mywants">
                                 {this.props.wantText} подарить
                                 <span className="ec ec-sunglasses"></span>
-                            </UserLink>
+                            </Link>
                         </ProfileDetailsMeta>
                         <ProfileDetailsBtn inSearch>
                             <DefaultBtn inProfile={"1.5em"} text={this.props.text} inSearch/>

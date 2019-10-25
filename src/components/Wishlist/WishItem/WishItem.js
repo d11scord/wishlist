@@ -4,7 +4,7 @@ import ActionsBar from "./ActionsBar/ActionsBar";
 
 const WishItemContainer = styled.div`
   width = 33.333%;
-  padding: 20pt 19pt;
+  padding: 19pt 34pt;
   text-align: left;
   word-break: break-all;
   white-space: normal;
@@ -43,6 +43,8 @@ const Description = styled(Span)`
   white-space: normal;
 `;
 
+const myFavs = [];
+
 class WishItem extends React.Component{
     render() {
         return(
@@ -55,11 +57,17 @@ class WishItem extends React.Component{
                     <NameSpan>{this.props.product.title}</NameSpan>
                     <PriceSpan>{this.props.product.price}</PriceSpan>
                     <Description>{this.props.product.description}</Description>
-                    <ActionsBar isMine={this.props.isMine} text={this.props.text} className="actionBar"/>
+                    <ActionsBar
+                        isMine={this.props.isMine}
+                        text={this.props.text}
+                        className="actionBar"
+                        product={this.props.product}
+                        handleMyFavorite={this.props.handleMyFavorite}
+                    />
                 </SpanContainer>
             </WishItemContainer>
         )
     }
 }
 
-export default WishItem;
+export { WishItem as default, myFavs };

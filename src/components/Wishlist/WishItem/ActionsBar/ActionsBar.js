@@ -12,19 +12,27 @@ const ActionBar = styled.div`
 
 class ActionsBar extends React.Component{
     render() {
-        if (this.props.isMine) {
-            return(
-                <ActionBar>
-                    <DeleteBtn text={this.props.text}/><GiftBtn/>
-                </ActionBar>
-            );
+        let favBtn;
+        if (this.props.product.isFavorite && this.props.isMine) {
+            favBtn = <DeleteBtn
+                isMine={this.props.isMine}
+                handleMyFavorite={this.props.handleMyFavorite}
+                text={this.props.text}
+                product={this.props.product}
+            />
         } else {
-            return(
-                <ActionBar>
-                    <DefaultBtn text={this.props.text}/>
-                </ActionBar>
-            )
+            favBtn = <DefaultBtn
+                isMine={this.props.isMine}
+                handleMyFavorite={this.props.handleMyFavorite}
+                text={this.props.text}
+                product={this.props.product}
+            />
         }
+        return (
+            <ActionBar handleMyFavorite={this.props.handleMyFavorite}>
+                {favBtn}
+            </ActionBar>
+        )
     }
 }
 

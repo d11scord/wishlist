@@ -23,7 +23,7 @@ class MyPage extends React.Component{
                 />
                 <Wishlist
                     isMine
-                    text={"Не подарю :с"}
+                    //text={"Не подарю :с"}
                     products={this.props.products}
                 />
             </div>

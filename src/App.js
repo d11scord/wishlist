@@ -29,6 +29,13 @@ export default function App() {
                         <li>
                             <Link to="/mypage">My page</Link>
                         </li>
+                        <span>========</span>
+                        <li>
+                            <Link to="/myfavorites">My favorites</Link>
+                        </li>
+                        <li>
+                            <Link to="/mywants">Want</Link>
+                        </li>
                     </ul>
                 </nav>
 
@@ -42,6 +49,14 @@ export default function App() {
                     <Route path="/mypage">
                         <MyPage user={ME} products={PRODUCTS} />
                     </Route>
+
+                    <Route path="/myfavorites">
+                        <MyPage user={ME} products={PRODUCTS}/>
+                    </Route>
+                    <Route path="/mywants">
+                        <MyPage user={ME} products={PRODUCTS} />
+                    </Route>
+
                     <Route path="/">
                         <Main user={ME} products={PRODUCTS} />
                     </Route>
@@ -54,13 +69,13 @@ export default function App() {
 const ME = {img: '/img/avatar.png', name: 'Антон Чащин'};
 
 const PRODUCTS = [
-    {img: '/img/iphone.png', title: 'iPhone XR 256GB', price: '70 000 ₽', description: 'Мобильный телефон Apple iPhone XR 256GB (желтый)'},
-    {img: '/img/iphone.png', title: 'iPhone XR 256GB', price: '70 000 ₽', description: 'Мобильный телефон Apple iPhone XR 256GB (желтый)'},
-    {img: '/img/iphone.png', title: 'iPhone XR 256GB', price: '70 000 ₽', description: 'Мобильный телефон Apple iPhone XR 256GB (желтый)'},
-    {img: '/img/iphone.png', title: 'iPhone XR 256GB', price: '70 000 ₽', description: 'Мобильный телефон Apple iPhone XR 256GB (желтый)'},
-    {img: '/img/iphone.png', title: 'iPhone XR 256GB', price: '70 000 ₽', description: 'Мобильный телефон Apple iPhone XR 256GB (желтый)'},
-    {img: '/img/iphone.png', title: 'iPhone XR 256GB', price: '70 000 ₽', description: 'Мобильный телефон Apple iPhone XR 256GB (желтый)'},
-    {img: '/img/iphone.png', title: 'iPhone XR 256GB', price: '70 000 ₽', description: 'Мобильный телефон Apple iPhone XR 256GB (желтый)'},
+    {id: 0, img: '/img/iphone.png', title: 'iPhone XR 256GB', price: '70 000 ₽', description: 'Мобильный телефон Apple iPhone XR 256GB (желтый)'},
+    {id: 1, img: '/img/iphone.png', title: 'iPhone XR 256GB', price: '70 000 ₽', description: 'Мобильный телефон Apple iPhone XR 256GB (желтый)'},
+    {id: 2, img: '/img/iphone.png', title: 'iPhone XR 256GB', price: '70 000 ₽', description: 'Мобильный телефон Apple iPhone XR 256GB (желтый)'},
+    {id: 3, img: '/img/iphone.png', title: 'iPhone XR 256GB', price: '70 000 ₽', description: 'Мобильный телефон Apple iPhone XR 256GB (желтый)'},
+    {id: 4, img: '/img/iphone.png', title: 'iPhone XR 256GB', price: '70 000 ₽', description: 'Мобильный телефон Apple iPhone XR 256GB (желтый)'},
+    {id: 5, img: '/img/iphone.png', title: 'iPhone XR 256GB', price: '70 000 ₽', description: 'Мобильный телефон Apple iPhone XR 256GB (желтый)'},
+    {id: 6, img: '/img/iphone.png', title: 'iPhone XR 256GB', price: '70 000 ₽', description: 'Мобильный телефон Apple iPhone XR 256GB (желтый)'},
 ];
 
 const FRIENDS = [

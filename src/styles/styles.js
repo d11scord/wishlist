@@ -11,6 +11,7 @@ const Button = styled.button`
   cursor: pointer;
   box-shadow: 0 3px 9px 0 rgba(0, 0, 0, 0.15);
   word-break: keep-all;
+  font-size: 14px;
 
   :focus {
       outline: none;

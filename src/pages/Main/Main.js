@@ -25,7 +25,7 @@ class Main extends React.Component{
                         <span className="ec ec-heart-eyes"></span>
                     </Label>
                     <Input searchPlaceholder={"Введите название товара"}/>
-                    <Wishlist products={this.props.products}/>
+                    <Wishlist isMine products={this.props.products}/>
                 </ContentContainer>
             </Content>
         )

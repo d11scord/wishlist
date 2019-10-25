@@ -6,7 +6,6 @@ const DefaultButton = styled(Button)`
   padding: ${props => props.inSearch ? "0.5rem" : "0.8rem"} ${props => props.inProfile};
   background-image: linear-gradient(73deg, #7dc4ff, #6700ff);
   color: white;
-  font-size: 14px;
   flex-grow: 1;
 
   :hover {
@@ -25,12 +24,16 @@ class DefaultBtn extends React.Component{
     };
 
     render() {
-        return(
-            <DefaultButton inProfile={this.props.inProfile} inSearch={this.props.inSearch}>
+        return (
+            <DefaultButton
+                inProfile={this.props.inProfile}
+                inSearch={this.props.inSearch}
+                onClick={() => this.props.handleMyFavorite(this.props.product.id)}
+            >
                 {this.props.text}
             </DefaultButton>
         )
-    }
+}
 }
 
 export default DefaultBtn;

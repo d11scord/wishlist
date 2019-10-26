@@ -16,16 +16,19 @@ const NavHeader = styled.div`
 const NavLeft = styled.div`
   width: 50%;
   text-align: left;
-  svg {
-    margin-right: 20pt;
-  }
 `;
 const NavRight = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  align-items: baseline;
   width: 50%;
   text-align: right;
 `;
 const HeaderLink = styled(ColoredLink)`
-  padding-left: ${props => props.isMyPage ? "0pt" : "15pt"};
+  padding: ${props => props.isMyPage ? "0pt" : "12pt"};
+`;
+const AvatarContainer = styled.div`
+  
 `;
 
 class Header extends React.Component {
@@ -43,10 +46,15 @@ class Header extends React.Component {
                     </NavLeft>
                     <NavRight>
                         <Link to={this.props.linkToRight}>
-                            <ColoredLink>
+                            <HeaderLink>
                                 {this.props.textRight || this.props.user.name}
-                            </ColoredLink>
+                            </HeaderLink>
                         </Link>
+                        <AvatarContainer>
+                            <Avatar isMyPage={this.props.isMyPage} avatarWidth="40px"/>
+                            <Avatar isMyPage={this.props.isMyPage} avatarWidth="40px"/>
+                            <Avatar isMyPage={this.props.isMyPage} avatarWidth="40px"/>
+                        </AvatarContainer>
                     </NavRight>
                 </NavHeader>
             </Nav>

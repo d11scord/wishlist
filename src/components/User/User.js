@@ -57,12 +57,16 @@ class User extends React.Component {
                         </ProfileDetailsUsername>
                         <ProfileDetailsMeta inSearch={this.props.inSearch}>
                             <Link to="/myfavorites">
-                                {this.props.wantText} получить
-                                <span className="ec ec-relieved"></span>
+                                <UserLink>
+                                    {this.props.wantText} получить
+                                    <span className="ec ec-relieved"></span>
+                                </UserLink>
                             </Link>
                             <Link to="/mywants">
-                                {this.props.wantText} подарить
-                                <span className="ec ec-sunglasses"></span>
+                                <UserLink>
+                                    {this.props.wantText} подарить
+                                    <span className="ec ec-sunglasses"></span>
+                                </UserLink>
                             </Link>
                         </ProfileDetailsMeta>
                         <ProfileDetailsBtn inSearch>

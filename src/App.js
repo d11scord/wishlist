@@ -19,14 +19,6 @@ class App extends React.Component {
         };
     }
 
-    filterFavs = () => {
-        const myFavoriteItems = this.state.myFavorites.filter(wishItem => wishItem.isFavorite)
-        this.setState({
-            myFavorites: myFavoriteItems
-        });
-        console.log(myFavoriteItems)
-    };
-
     componentDidMount() {
         const results = this.props.products.map(product => {
             product.isFavorite = false;
@@ -89,7 +81,7 @@ class App extends React.Component {
                         </Route>
 
                         <Route path="/myfavorites">
-                            <MyPage user={this.props.me} products={this.state.myFavorites} handleMyFavorite={this.filterFavs}/>
+                            <MyPage user={this.props.me} products={this.state.myFavorites} handleMyFavorite={this.handleMyFavorite}/>
                         </Route>
                         <Route path="/mywants">
                             <MyPage user={this.props.me} products={this.props.products} handleMyFavorite={this.handleMyFavorite}/>

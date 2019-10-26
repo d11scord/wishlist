@@ -4,8 +4,9 @@ import WishItem from './WishItem/WishItem.js';
 import EmptyResponse from "../EmptyResponse";
 
 const WishlistContainer = styled.div`
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
 `;
 
 class Wishlist extends React.Component{

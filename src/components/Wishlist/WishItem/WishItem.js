@@ -3,8 +3,10 @@ import styled from "styled-components";
 import ActionsBar from "./ActionsBar/ActionsBar";
 
 const WishItemContainer = styled.div`
-  width = 33.333%;
-  padding: 19pt 34pt;
+  width: -moz-min-content;
+  position: relative;
+  flex-basis: calc(33.333% - 80px);
+  margin: 25px;
   text-align: left;
   word-break: break-all;
   white-space: normal;

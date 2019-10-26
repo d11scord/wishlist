@@ -28,6 +28,7 @@ const ColoredLink = styled.a`
   }
 
   :active {
+    text-decoration: none;
     color: #2168a8;
   }
 `;

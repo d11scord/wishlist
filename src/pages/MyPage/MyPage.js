@@ -25,6 +25,7 @@ class MyPage extends React.Component{
                     isMine
                     //text={"Не подарю :с"}
                     products={this.props.products}
+                    handleMyFavorite={this.props.handleMyFavorite}
                 />
             </div>
         )

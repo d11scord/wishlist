@@ -12,23 +12,30 @@ const NavHeader = styled.div`
   display: flex;
   align-items: center;
   margin: 0 auto;
+  justify-content: space-between;
 `;
 const NavLeft = styled.div`
-  width: 50%;
+  width: 33%;
   text-align: left;
 `;
 const NavRight = styled.div`
   display: flex;
   justify-content: flex-end;
-  align-items: baseline;
-  width: 50%;
+  align-items: center;
+  width: 33%;
   text-align: right;
+`;
+const NavCenter = styled.div`
+  display: ${props => props.isFriendPage ? "flex" : "none"}
+  width: 33%;
+  justify-content: center;
 `;
 const HeaderLink = styled(ColoredLink)`
   padding: ${props => props.isMyPage ? "0pt" : "12pt"};
 `;
 const AvatarContainer = styled.div`
-  
+  display: flex;
+  flex-direction: row-reverse;
 `;
 
 class Header extends React.Component {
@@ -38,12 +45,18 @@ class Header extends React.Component {
                 <NavHeader>
                     <NavLeft>
                         <Link to={this.props.linkToLeft}>
-                            <Avatar isMyPage={this.props.isMyPage} avatarWidth="40px"/>
-                            <HeaderLink isMyPage={this.props.isMyPage}>
+                            <Avatar isHide={this.props.isHide} avatarWidth="40px"/>
+                            <HeaderLink isHide={this.props.isHide}>
                                 {this.props.textLeft || this.props.user.name}
                             </HeaderLink>
                         </Link>
                     </NavLeft>
+                    <NavCenter isFriendPage={this.props.isFriendPage}>
+                        <Link exact to="/" />
+                        <HeaderLink>
+                            {"Вернуться к поиску"}
+                        </HeaderLink>
+                    </NavCenter>
                     <NavRight>
                         <Link to={this.props.linkToRight}>
                             <HeaderLink>
@@ -51,9 +64,9 @@ class Header extends React.Component {
                             </HeaderLink>
                         </Link>
                         <AvatarContainer>
-                            <Avatar isMyPage={this.props.isMyPage} avatarWidth="40px"/>
-                            <Avatar isMyPage={this.props.isMyPage} avatarWidth="40px"/>
-                            <Avatar isMyPage={this.props.isMyPage} avatarWidth="40px"/>
+                            <Avatar inHeader isHide={this.props.isHide} avatarWidth="40px"/>
+                            <Avatar inHeader isHide={this.props.isHide} avatarWidth="40px"/>
+                            <Avatar isHide={this.props.isHide} avatarWidth="40px"/>
                         </AvatarContainer>
                     </NavRight>
                 </NavHeader>

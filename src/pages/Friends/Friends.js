@@ -15,10 +15,10 @@ class Friends extends React.Component {
         return(
             <ContentContainer>
                 <Header
-                    isFriends
+                    isHide
                     user={this.props.user}
-                    textRight={"Вернуться к поиску"}
                     linkToLeft={"/mypage"}
+                    textRight={"Вернуться к поиску"}
                     linkToRight={"/"}
                 />
                 <FriendsWrapper>

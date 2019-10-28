@@ -8,7 +8,7 @@ class MyPage extends React.Component{
         return(
             <div>
                 <Header
-                    isMyPage
+                    isHide
                     user={this.props.user}
                     textLeft={"Вернуться к поиску"}
                     textRight={"Мои друзья"}
@@ -23,7 +23,6 @@ class MyPage extends React.Component{
                 />
                 <Wishlist
                     isMine
-                    //text={"Не подарю :с"}
                     products={this.props.products}
                     handleMyFavorite={this.props.handleMyFavorite}
                 />

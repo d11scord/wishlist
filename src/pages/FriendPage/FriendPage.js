@@ -7,7 +7,13 @@ class FriendPage extends React.Component{
     render(){
         return(
             <div>
-                <Header/>
+                <Header
+                    isFriendPage
+                    user={this.props.user}
+                    textRight={"Мои друзья"}
+                    linkToLeft={"/mypage"}
+                    linkToRight={"/friendslist"}
+                />
                 <User
                     wantText={"Хочет"}
                     text={"Поделиться"}

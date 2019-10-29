@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from "styled-components";
 import { Button } from "../../../../../styles/styles";
+import { Link } from "react-router-dom";
 
 const DefaultButton = styled(Button)`
   padding: ${props => props.inSearch ? "0.5rem" : "0.8rem"} ${props => props.inProfile};
@@ -24,16 +25,26 @@ class DefaultBtn extends React.Component{
     };
 
     render() {
-        return (
-            <DefaultButton
-                inProfile={this.props.inProfile}
-                inSearch={this.props.inSearch}
-                onClick={() => this.props.handleMyFavorite(this.props.product.id)}
-            >
-                {this.props.text}
-            </DefaultButton>
+        let btn;
+        if (!this.props.inSearch) {
+            btn = <DefaultButton
+                    inProfile={this.props.inProfile}
+                    inSearch={this.props.inSearch}
+                    onClick={() => this.props.handleMyFavorite(this.props.product.id)}
+                    >
+                        {this.props.text}
+                    </DefaultButton>
+        }else{
+            btn = <Link to={"/friend"}>
+                        <DefaultButton inSearch={this.props.inSearch}>
+                            {"Узнать что подарить"}
+                        </DefaultButton>
+                    </Link>
+                };
+        return(
+            btn
         )
-}
+    }
 }
 
 export default DefaultBtn;

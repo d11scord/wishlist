@@ -15,7 +15,7 @@ class Friends extends React.Component {
         return(
             <ContentContainer>
                 <Header
-                    isHide
+                    isHideRight
                     user={this.props.user}
                     linkToLeft={"/mypage"}
                     textRight={"Вернуться к поиску"}
@@ -27,7 +27,7 @@ class Friends extends React.Component {
                         <span className="ec ec-stuck-out-tongue-winking-eye"></span>
                     </Label>
                     <Input searchPlaceholder={"Начни вводить имя друга"}/>
-                    <FriendsList text={"Узнать что подарить"} friends={this.props.friends}/>
+                    <FriendsList friends={this.props.friends}/>
                 </FriendsWrapper>
             </ContentContainer>
         )

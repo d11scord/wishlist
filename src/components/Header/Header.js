@@ -2,7 +2,6 @@ import React from 'react';
 import styled from "styled-components";
 import Avatar from "../User/Avatar";
 import { ColoredLink } from './../../styles/styles.js';
-import { Link } from "react-router-dom";
 
 const Nav = styled.div`
 `;
@@ -44,31 +43,25 @@ class Header extends React.Component {
             <Nav>
                 <NavHeader>
                     <NavLeft>
-                        <Link to={this.props.linkToLeft}>
-                            <Avatar isHide={this.props.isHide} avatarWidth="40px"/>
-                            <HeaderLink isHide={this.props.isHide}>
-                                {this.props.textLeft || this.props.user.name}
-                            </HeaderLink>
-                        </Link>
+                        <Avatar isHide={this.props.isHideLeft} avatarWidth="40px"/>
+                        <HeaderLink to={this.props.linkToLeft}>
+                            {this.props.textLeft || this.props.user.name}
+                        </HeaderLink>
                     </NavLeft>
                     <NavCenter isFriendPage={this.props.isFriendPage}>
-                        <Link to={"/"}>
-                            <HeaderLink>
-                                {"Вернуться к поиску"}
-                            </HeaderLink>
-                        </Link>
+                        <HeaderLink to={"/"}>
+                            {"Вернуться к поиску"}
+                        </HeaderLink>
                     </NavCenter>
                     <NavRight>
-                        <Link to={this.props.linkToRight}>
-                            <HeaderLink>
-                                {this.props.textRight || this.props.user.name}
-                            </HeaderLink>
-                        </Link>
-                            <AvatarContainer>
-                                <Avatar inHeader isHide={this.props.isHide} avatarWidth="40px"/>
-                                <Avatar inHeader isHide={this.props.isHide} avatarWidth="40px"/>
-                                <Avatar isHide={this.props.isHide} avatarWidth="40px"/>
-                            </AvatarContainer>
+                        <HeaderLink to={this.props.linkToRight}>
+                            {this.props.textRight || this.props.user.name}
+                        </HeaderLink>
+                        <AvatarContainer>
+                            <Avatar inHeader isHide={this.props.isHideRight} avatarWidth="40px"/>
+                            <Avatar inHeader isHide={this.props.isHideRight} avatarWidth="40px"/>
+                            <Avatar isHide={this.props.isHideRight} avatarWidth="40px"/>
+                        </AvatarContainer>
                     </NavRight>
                 </NavHeader>
             </Nav>

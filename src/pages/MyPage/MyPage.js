@@ -8,7 +8,7 @@ class MyPage extends React.Component{
         return(
             <div>
                 <Header
-                    isHide
+                    isHideLeft
                     user={this.props.user}
                     textLeft={"Вернуться к поиску"}
                     textRight={"Мои друзья"}

@@ -48,7 +48,7 @@ class App extends React.Component {
                     <nav>
                         <ul>
                             <li>
-                                <Link exact to="/">Main</Link>
+                                <Link to="/">Main</Link>
                             </li>
                             <li>
                                 <Link to="/friendslist">Search friends</Link>

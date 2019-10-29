@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 const ContentContainer = styled.div`
   text-align: center;
@@ -18,7 +19,7 @@ const Button = styled.button`
   }
 `;
 
-const ColoredLink = styled.a`
+const ColoredLink = styled(Link)`
   font-size: 15px;
   color: #329eff;
 
@@ -30,6 +31,10 @@ const ColoredLink = styled.a`
   :active {
     text-decoration: none;
     color: #2168a8;
+  }
+
+  :focus, :visited, :link {
+    text-decoration: none;
   }
 `;
 

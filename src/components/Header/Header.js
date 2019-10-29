@@ -52,10 +52,11 @@ class Header extends React.Component {
                         </Link>
                     </NavLeft>
                     <NavCenter isFriendPage={this.props.isFriendPage}>
-                        <Link exact to="/" />
-                        <HeaderLink>
-                            {"Вернуться к поиску"}
-                        </HeaderLink>
+                        <Link to={"/"}>
+                            <HeaderLink>
+                                {"Вернуться к поиску"}
+                            </HeaderLink>
+                        </Link>
                     </NavCenter>
                     <NavRight>
                         <Link to={this.props.linkToRight}>
@@ -63,11 +64,11 @@ class Header extends React.Component {
                                 {this.props.textRight || this.props.user.name}
                             </HeaderLink>
                         </Link>
-                        <AvatarContainer>
-                            <Avatar inHeader isHide={this.props.isHide} avatarWidth="40px"/>
-                            <Avatar inHeader isHide={this.props.isHide} avatarWidth="40px"/>
-                            <Avatar isHide={this.props.isHide} avatarWidth="40px"/>
-                        </AvatarContainer>
+                            <AvatarContainer>
+                                <Avatar inHeader isHide={this.props.isHide} avatarWidth="40px"/>
+                                <Avatar inHeader isHide={this.props.isHide} avatarWidth="40px"/>
+                                <Avatar isHide={this.props.isHide} avatarWidth="40px"/>
+                            </AvatarContainer>
                     </NavRight>
                 </NavHeader>
             </Nav>

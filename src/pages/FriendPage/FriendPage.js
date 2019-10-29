@@ -18,7 +18,7 @@ class FriendPage extends React.Component{
                     wantText={"Хочет"}
                     text={"Поделиться"}
                     avatarWidth="150px"
-                    user={this.props.user}
+                    user={this.props.friend}
                 />
                 <Wishlist
                     text={"Подарю"}

@@ -11,13 +11,17 @@ const ProfileAvatar = styled.img`
 `;
 
 class Avatar extends React.Component{
+    static defaultProps = {
+        src: process.env.PUBLIC_URL + '/img/avatar.png',
+    };
+
     render() {
         return (
             <ProfileAvatar
                 inHeader={this.props.inHeader}
                 isHide={this.props.isHide}
                 avatarWidth={this.props.avatarWidth}
-                src={process.env.PUBLIC_URL + '/img/avatar.png'}
+                src={this.props.src}
                 alt="Avatar"
             />
         )

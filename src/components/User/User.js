@@ -48,7 +48,7 @@ class User extends React.Component {
             <ProfileContainer>
                 <ProfileDetails inSearch={this.props.inSearch}>
                     <ProfileDetailsLeft inSearch={this.props.inSearch}>
-                        <Avatar avatarWidth={this.props.avatarWidth}/>
+                        <Avatar src={this.props.user.img} avatarWidth={this.props.avatarWidth}/>
                     </ProfileDetailsLeft>
                     <ProfileDetailsRight inSearch={this.props.inSearch}>
                         <ProfileDetailsUsername inSearch>

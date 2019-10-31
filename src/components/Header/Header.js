@@ -43,7 +43,7 @@ class Header extends React.Component {
             <Nav>
                 <NavHeader>
                     <NavLeft>
-                        <Avatar isHide={this.props.isHideLeft} avatarWidth="40px"/>
+                        <Avatar src={this.props.user.img} isHide={this.props.isHideLeft} avatarWidth="40px"/>
                         <HeaderLink to={this.props.linkToLeft}>
                             {this.props.textLeft || this.props.user.name}
                         </HeaderLink>

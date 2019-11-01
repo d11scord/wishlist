@@ -10,7 +10,7 @@ import Main from "./pages/Main";
 import Friends from "./pages/Friends";
 import FriendPage from "./pages/FriendPage";
 import MyPage from './pages/MyPage';
-import connect from "@vkontakte/vk-connect";
+// import connect from "@vkontakte/vk-connect";
 
 class App extends React.Component {
     constructor(props){

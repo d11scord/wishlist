@@ -5,7 +5,7 @@ import DefaultBtn from "../Wishlist/WishItem/ActionsBar/DefaultBtn";
 import { ColoredLink } from './../../styles/styles.js';
 
 const ProfileContainer = styled.div`
-  width: 100%;
+
 `;
 const ProfileDetails = styled.div`
   display: ${props => props.inSearch ? "inline-flex" : "flex"};
@@ -66,6 +66,7 @@ class User extends React.Component {
                         </ProfileDetailsMeta>
                         <ProfileDetailsBtn inSearch>
                             <DefaultBtn
+                                user={this.props.user}
                                 inSearch={this.props.inSearch}
                                 inProfile={"1.5em"}
                                 text={this.props.text}

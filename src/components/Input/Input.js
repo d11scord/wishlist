@@ -34,19 +34,17 @@ const InputField = styled.input`
 class Input extends React.Component{
     state = {
         query: '',
-        results: []
+        results: [],
+        isEmpty: true,
     };
 
-    componentDidMount() {
-        this.getInfo();
-    }
-
     getInfo = () => {
-        api(`/api/products/suggest?query=i${this.state.query}`)
+        api(`/api/products/suggest?query=${this.state.query}`)
             .then(data => {
                 console.log(data);
                 this.setState({
                     results: data.response.suggestions.completions.map((sugg) => sugg.value),
+                    isEmpty: false,
                 })
             })
     };
@@ -65,6 +63,12 @@ class Input extends React.Component{
     };
 
     render() {
+        let temp;
+        if (this.state.isEmpty){
+            temp = ''
+        } else {
+            temp = <Suggestions results={this.state.results} />
+        }
         return (
             <Container>
                 <InputContainer>
@@ -73,7 +77,7 @@ class Input extends React.Component{
                         ref={input => this.search = input}
                         onChange={this.handleInputChange}
                     />
-                    <Suggestions results={this.state.results} />
+                    {temp}
                 </InputContainer>
             </Container>
         )

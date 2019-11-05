@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 
 const ContentContainer = styled.div`
-  text-align: center;
+  // text-align: center;
 `;
 
 const Button = styled.button`

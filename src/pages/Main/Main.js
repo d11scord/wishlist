@@ -4,7 +4,6 @@ import Input from "../../components/Input";
 import Wishlist from "../../components/Wishlist";
 import { ContentContainer, Label } from './../../styles/styles.js';
 import styled from "styled-components";
-import connect from "@vkontakte/vk-connect";
 import api from "../../api";
 
 const Content = styled.div`
@@ -12,20 +11,30 @@ const Content = styled.div`
 `;
 
 class Main extends React.Component{
-    state = {
-      suggestions: [],
+    constructor(props){
+        super(props)
+        this.state = {
+          suggestions: [],
+          isLoading: false,
+        }
     };
 
     componentDidMount() {
+        this.setState({ isLoading: true });
         api('/api/products/suggest?query=iphone').then(result => {
-            console.log(result);
+            console.log(result.response.suggestions.completions.map((sugg) => sugg.value));
             this.setState(
-                this.suggestions = result
+                { suggestions: result.response.suggestions.completions.map((sugg) => sugg.value),
+                  isLoading: false }
             );
         })
     }
 
     render(){
+        const { suggestions, isLoading } = this.state;
+        if (isLoading) {
+            return <p>Loading ...</p>;
+        }
         return(
             <Content>
                 <Header
@@ -39,8 +48,8 @@ class Main extends React.Component{
                         <span>Вишлист</span>
                         <span className="ec ec-heart-eyes"></span>
                     </Label>
-                    <Input searchPlaceholder={"Введите название товара"}/>
-                    {this.state.suggestions}
+                    <Input suggestions={suggestions} searchPlaceholder={"Введите название товара"}/>
+                    {suggestions.map((sugg, idx) => <p key={idx}> {sugg} </p>)}
                     <Wishlist isMine products={this.props.products} handleMyFavorite={this.props.handleMyFavorite}/>
                 </ContentContainer>
             </Content>

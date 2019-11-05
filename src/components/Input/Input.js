@@ -1,5 +1,8 @@
 import React from 'react';
 import styled from "styled-components";
+import api from './../../api.js';
+
+import { Autocomplete } from 'react-md';
 
 const Container = styled.div`
   padding-bottom: 3em;
@@ -18,38 +21,28 @@ const InputContainer = styled.input`
   :focus{
     outline: none;
 `;
-//
+
 class Input extends React.Component{
-
-    constructor(props) {
+    constructor(props){
         super(props);
-        this.state = {value:''};
-        this.handleChange = this.handleChange.bind(this);
-        this.keyPress = this.keyPress.bind(this);
-    }
-
-    keyPress(e){
-        if(e.keyCode === 13){
-            console.log('value', e.target.value);
+        this.state = {
+            value: '',
         }
     }
 
-    handleChange(e) {
-        this.setState({ value: e.target.value });
+    render() {
+        return (
+        <Container>
+          <Autocomplete
+            placeholder="Javascript"
+            data={this.props.suggestions}
+            // filter={Autocomplete.caseInsensitiveFilter}
+          />
+        </Container>
+        );
     }
 
-    render(){
-        return(
-            <Container>
-                <InputContainer
-                    placeholder={this.props.searchPlaceholder}
-                    onChange={this.handleChange}
-                    onKeyDown={this.keyPress}
-                    value={this.state.value}
-                />
-            </Container>
-        )
-    }
+
 }
 
 export default Input;

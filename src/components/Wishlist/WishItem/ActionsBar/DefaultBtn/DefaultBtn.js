@@ -35,12 +35,12 @@ class DefaultBtn extends React.Component{
                         {this.props.text}
                     </DefaultButton>
         }else{
-            btn = <Link to={"/friend"}>
+            btn = <Link to={`/friend:${this.props.user.id}`}>
                         <DefaultButton inSearch={this.props.inSearch}>
                             {"Узнать что подарить"}
                         </DefaultButton>
                     </Link>
-                };
+                }
         return(
             btn
         )

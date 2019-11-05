@@ -74,8 +74,8 @@ class App extends React.Component {
                         <Route path="/friendslist">
                             <Friends user={this.props.me} friends={this.props.friends} />
                         </Route>
-                        <Route path="/friend">
-                            <FriendPage user={this.props.me} friend={this.props.friends[0]} products={this.props.products} />
+                        <Route path="/friend/:id">
+                            <FriendPage user={this.props.me} friend={this.props.friends} products={this.props.products} />
                         </Route>
                         <Route path="/mypage">
                             <MyPage user={this.props.me} products={this.props.products} handleMyFavorite={this.handleMyFavorite} />

@@ -24,17 +24,6 @@ class Main extends React.Component{
         }
     };
 
-    componentDidMount() {
-        // this.setState({ isLoading: true });
-        // api('/api/products/suggest?query=i').then(result => {
-        //     console.log(result.response);
-        //     this.setState(
-        //         { suggestions: result.response.suggestions.completions.map((sugg) => sugg.value),
-        //           isLoading: false }
-        //     );
-        // })
-    }
-
     render(){
         const { suggestions, isLoading } = this.state;
         if (isLoading) {

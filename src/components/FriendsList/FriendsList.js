@@ -3,9 +3,6 @@ import styled from "styled-components";
 import EmptyResponse from "../EmptyResponse";
 import User from './../User/';
 import DeleteBtn from "../Wishlist/WishItem/ActionsBar/DeleteBtn";
-import {
-    useRouteMatch
-} from "react-router-dom";
 
 const ContentContainer = styled.div`
     align-self: center;

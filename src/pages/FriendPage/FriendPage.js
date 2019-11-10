@@ -1,43 +1,55 @@
-import React from 'react';
+import React, {Fragment} from 'react';
+import connect from "@vkontakte/vk-connect";
+import { withRouter } from "react-router-dom";
 import Header from "../../components/Header";
 import Wishlist from "../../components/Wishlist";
 import User from "../../components/User";
-import connect from "@vkontakte/vk-connect";
-import {useParams
-} from "react-router-dom";
+import Pending from "../../components/Pending";
 
 class FriendPage extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            friend: {id: 3, name: "jopa"},
+            friend: {},
+            isLoading: false,
         };
     }
 
     componentDidMount() {
-        let { id } = useParams();
-        connect.sendPromise("VKWebAppGetAuthToken", {"app_id": 7159872, "scope": "friends"}).then(data => {
-            connect.sendPromise("VKWebAppCallAPIMethod", {
+        this.setState({ isLoading: true });
+        const id = this.props.match.params.id;
+        connect.sendPromise("VKWebAppGetAuthToken", {"app_id": 7177327, "scope": "friends"})
+            .then(data => {
+            return connect.sendPromise("VKWebAppCallAPIMethod", {
                 "method": "users.get",
-                "request_id": "0",
+                "request_id": "5",
                 "params": {
-                    "user_ids": { id },
+                    "user_ids": id,
+                    "fields": ["photo_200"],
                     "v": "5.103",
                     "access_token": data.access_token,
                 }
             }).then(friend => {
-                console.log(friend);
+                const frd = friend.response[0];
                 this.setState({
-                    friend: friend,
+                    friend: {
+                        id: frd.id,
+                        img: frd.photo_200,
+                        name: `${frd.first_name} ${frd.last_name}`
+                    },
+                    isLoading: false,
                 });
             })
         });
     }
 
     render() {
-        console.log(this.props.friend);
+        const { isLoading } = this.state;
+        if (isLoading) {
+            return <Pending/>;
+        }
         return (
-            <div>
+            <Fragment>
                 <Header
                     isFriendPage
                     user={this.props.user}
@@ -49,15 +61,15 @@ class FriendPage extends React.Component {
                     wantText={"Хочет"}
                     text={"Поделиться"}
                     avatarWidth="150px"
-                    user={this.props.friend}
+                    user={this.state.friend}
                 />
                 <Wishlist
                     text={"Подарю"}
                     products={this.props.products}
                 />
-            </div>
+            </Fragment>
         )
     }
 }
 
-export default FriendPage;
+export default withRouter(FriendPage);

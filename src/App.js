@@ -60,13 +60,6 @@ class App extends React.Component {
                             <li>
                                 <Link to="/mypage">My page</Link>
                             </li>
-                            <span>========</span>
-                            <li>
-                                <Link to="/myfavorites">My favorites</Link>
-                            </li>
-                            <li>
-                                <Link to="/mywants">Want</Link>
-                            </li>
                         </ul>
                     </nav>
 
@@ -79,13 +72,6 @@ class App extends React.Component {
                         </Route>
                         <Route path="/mypage">
                             <MyPage user={this.props.me} products={this.props.products} handleMyFavorite={this.handleMyFavorite} />
-                        </Route>
-
-                        <Route path="/myfavorites">
-                            <MyPage user={this.props.me} products={this.state.myFavorites} handleMyFavorite={this.handleMyFavorite}/>
-                        </Route>
-                        <Route path="/mywants">
-                            <MyPage user={this.props.me} products={this.props.products} handleMyFavorite={this.handleMyFavorite}/>
                         </Route>
 
                         <Route path="/">

@@ -1,12 +1,9 @@
-import React from 'react';
+import React, {Fragment} from 'react';
 import styled from "styled-components";
 import Avatar from "./Avatar";
 import DefaultBtn from "../Wishlist/WishItem/ActionsBar/DefaultBtn";
 import { ColoredLink } from './../../styles/styles.js';
 
-const ProfileContainer = styled.div`
-
-`;
 const ProfileDetails = styled.div`
   display: ${props => props.inSearch ? "inline-flex" : "flex"};
 `;
@@ -45,7 +42,7 @@ const UserLink = styled(ColoredLink)`
 class User extends React.Component {
     render() {
         return (
-            <ProfileContainer>
+            <Fragment>
                 <ProfileDetails inSearch={this.props.inSearch}>
                     <ProfileDetailsLeft inSearch={this.props.inSearch}>
                         <Avatar src={this.props.user.img} avatarWidth={this.props.avatarWidth}/>
@@ -55,11 +52,11 @@ class User extends React.Component {
                             <h3>{this.props.user.name}</h3>
                         </ProfileDetailsUsername>
                         <ProfileDetailsMeta inSearch={this.props.inSearch}>
-                            <UserLink to="/myfavorites">
+                            <UserLink>
                                 {this.props.wantText} получить
                                 <span className="ec ec-relieved"></span>
                             </UserLink>
-                            <UserLink to="/mywants">
+                            <UserLink>
                                 {this.props.wantText} подарить
                                 <span className="ec ec-sunglasses"></span>
                             </UserLink>
@@ -74,7 +71,7 @@ class User extends React.Component {
                         </ProfileDetailsBtn>
                     </ProfileDetailsRight>
                 </ProfileDetails>
-            </ProfileContainer>
+            </Fragment>
         )
     }
 }

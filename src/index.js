@@ -5,7 +5,7 @@ import './index.css';
 import connect from "@vkontakte/vk-connect";
 
 const WISHLIST_ID = 6868134;
-const APP_ID = 7159872;
+const APP_ID = 7177327;
 
 let FRIENDS = [];
 const AUTH_PARAMS = '?vk_access_token_settings=&vk_app_id=6868134&vk_are_notifications_enabled=0&vk_is_app_user=0&vk_is_favorite=0&vk_language=ru&vk_platform=desktop_web&vk_ref=other&vk_user_id=199026622&sign=C_R2Gsf-lpF-yjdZ4F1L7xgpWWB0QcKRjUfmc7n-Yis';
@@ -44,7 +44,8 @@ fetch('/api/user/auth' + AUTH_PARAMS, {method: 'POST'})
         const ME = {
             id: data_user.id,
             img: data_user.photo_200,
-            name: `${data_user.first_name} ${data_user.last_name}`};
+            name: `${data_user.first_name} ${data_user.last_name}`
+        };
 
         const PRODUCTS = [
             {id: 0, img: '/img/iphone.png', title: 'iPhone XR 256GB', price: '70 000 ₽', description: 'Мобильный телефон Apple iPhone XR 256GB (желтый)'},

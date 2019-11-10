@@ -45,8 +45,6 @@ const Description = styled(Span)`
   white-space: normal;
 `;
 
-const myFavs = [];
-
 class WishItem extends React.Component{
     render() {
         return(
@@ -72,4 +70,4 @@ class WishItem extends React.Component{
     }
 }
 
-export { WishItem as default, myFavs };
+export { WishItem as default };

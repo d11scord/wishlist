@@ -1,31 +1,25 @@
-import React from 'react';
+import React, {Fragment} from 'react';
 import styled from "styled-components";
-import api from "../../api";
 import Header from "../../components/Header";
 import Input from "../../components/Input";
 import Wishlist from "../../components/Wishlist";
-import { ContentContainer, Label } from './../../styles/styles.js';
 import Pending from "../../components/Pending";
+import { Label } from './../../styles/styles.js';
 
 const Content = styled.div`
   padding: 0em 0em 1.5em;
-`;
-
-const LabelContainer = styled(Label)`
-  text-align: center;
 `;
 
 class Main extends React.Component{
     constructor(props){
         super(props);
         this.state = {
-          suggestions: [],
           isLoading: false,
         }
     };
 
     render(){
-        const { suggestions, isLoading } = this.state;
+        const { isLoading } = this.state;
         if (isLoading) {
             return <Pending/>;
         }
@@ -37,15 +31,15 @@ class Main extends React.Component{
                     textRight={"Мои друзья"}
                     linkToLeft={"/mypage"}
                 />
-                <ContentContainer>
-                    <LabelContainer>
+                <Fragment>
+                    <Label>
                         <span>Вишлист</span>
                         <span className="ec ec-heart-eyes"></span>
-                    </LabelContainer>
+                    </Label>
                     <Input searchPlaceholder={"Введите название товара"}/>
                     {/*{suggestions.map((sugg, idx) => <p key={idx}> {sugg} </p>)}*/}
                     <Wishlist isMine products={this.props.products} handleMyFavorite={this.props.handleMyFavorite}/>
-                </ContentContainer>
+                </Fragment>
             </Content>
         )
     }

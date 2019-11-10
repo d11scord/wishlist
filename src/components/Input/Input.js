@@ -1,19 +1,13 @@
 import React from 'react';
 import styled from "styled-components";
 import api from './../../api.js';
-
-import { Autocomplete } from 'react-md';
 import Suggestions from "./Suggestions";
 
 const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-bottom: 3em;
-`;
-
-const InputContainer = styled.form`
-  width: 500px;
+  padding-bottom: ${state => state.isEmpty ? "5em" : "2em"};
 `;
 
 const InputField = styled.input`
@@ -51,7 +45,7 @@ class Input extends React.Component{
 
     handleInputChange = () => {
         this.setState({
-            query: this.search.value
+            query: this.search.value,
         }, () => {
             if (this.state.query && this.state.query.length > 1) {
                 if (this.state.query.length % 2 === 0) {
@@ -64,21 +58,17 @@ class Input extends React.Component{
 
     render() {
         let temp;
-        if (this.state.isEmpty){
-            temp = ''
-        } else {
+        if (!this.state.isEmpty){
             temp = <Suggestions results={this.state.results} />
         }
         return (
-            <Container>
-                <InputContainer>
-                    <InputField
-                        placeholder={this.props.searchPlaceholder}
-                        ref={input => this.search = input}
-                        onChange={this.handleInputChange}
-                    />
-                    {temp}
-                </InputContainer>
+            <Container isEmpty={this.state.isEmpty}>
+                <InputField
+                    placeholder={this.props.searchPlaceholder}
+                    ref={input => this.search = input}
+                    onChange={this.handleInputChange}
+                />
+                {temp}
             </Container>
         )
     }

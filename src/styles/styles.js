@@ -1,10 +1,6 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 
-const ContentContainer = styled.div`
-  // text-align: center;
-`;
-
 const Button = styled.button`
   padding: 0.8rem;
   border: none;
@@ -43,10 +39,10 @@ const Label = styled.div`
   margin-top: 0.3em;
   margin-bottom: 0.6em;
   font-size: 32pt;
+  text-align: center;
 `;
 
 export {
-    ContentContainer,
     Button,
     Label,
     ColoredLink,

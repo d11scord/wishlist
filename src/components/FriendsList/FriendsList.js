@@ -15,6 +15,14 @@ const FriendsContainer = styled.div`
 `;
 
 class FriendsList extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            nowDisplayed: 0
+        };
+        //Кто сейчас это читает, тот самый лучший
+    }
+
     render(){
         if (this.props.friends.length) {
             const friends = this.props.friends;

@@ -21,6 +21,7 @@ class FriendsList extends React.Component {
             nowDisplayed: 0
         };
         //Кто сейчас это читает, тот самый лучший
+        //Кто написал это, тот самый лучший <3
     }
 
     render(){

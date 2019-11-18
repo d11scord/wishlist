@@ -1,24 +1,24 @@
 {
   "files": {
-    "main.css": "/wishlist/static/css/main.d0a36d07.chunk.css",
-    "main.js": "/wishlist/static/js/main.6a630de0.chunk.js",
-    "main.js.map": "/wishlist/static/js/main.6a630de0.chunk.js.map",
-    "runtime-main.js": "/wishlist/static/js/runtime-main.647192b4.js",
-    "runtime-main.js.map": "/wishlist/static/js/runtime-main.647192b4.js.map",
-    "static/css/2.10331018.chunk.css": "/wishlist/static/css/2.10331018.chunk.css",
-    "static/js/2.f44ea5dd.chunk.js": "/wishlist/static/js/2.f44ea5dd.chunk.js",
-    "static/js/2.f44ea5dd.chunk.js.map": "/wishlist/static/js/2.f44ea5dd.chunk.js.map",
-    "index.html": "/wishlist/index.html",
-    "precache-manifest.44ed0810f9836bf7fae38bc04a9434f7.js": "/wishlist/precache-manifest.44ed0810f9836bf7fae38bc04a9434f7.js",
-    "service-worker.js": "/wishlist/service-worker.js",
-    "static/css/2.10331018.chunk.css.map": "/wishlist/static/css/2.10331018.chunk.css.map",
-    "static/css/main.d0a36d07.chunk.css.map": "/wishlist/static/css/main.d0a36d07.chunk.css.map"
+    "main.css": "/wishlist-vk/static/css/main.4d3f2216.chunk.css",
+    "main.js": "/wishlist-vk/static/js/main.bd4e8e45.chunk.js",
+    "main.js.map": "/wishlist-vk/static/js/main.bd4e8e45.chunk.js.map",
+    "runtime-main.js": "/wishlist-vk/static/js/runtime-main.92dd83ea.js",
+    "runtime-main.js.map": "/wishlist-vk/static/js/runtime-main.92dd83ea.js.map",
+    "static/css/2.10331018.chunk.css": "/wishlist-vk/static/css/2.10331018.chunk.css",
+    "static/js/2.ac793c10.chunk.js": "/wishlist-vk/static/js/2.ac793c10.chunk.js",
+    "static/js/2.ac793c10.chunk.js.map": "/wishlist-vk/static/js/2.ac793c10.chunk.js.map",
+    "index.html": "/wishlist-vk/index.html",
+    "precache-manifest.3042d4da76a74ebe86da3f2fa021d923.js": "/wishlist-vk/precache-manifest.3042d4da76a74ebe86da3f2fa021d923.js",
+    "service-worker.js": "/wishlist-vk/service-worker.js",
+    "static/css/2.10331018.chunk.css.map": "/wishlist-vk/static/css/2.10331018.chunk.css.map",
+    "static/css/main.4d3f2216.chunk.css.map": "/wishlist-vk/static/css/main.4d3f2216.chunk.css.map"
   },
   "entrypoints": [
-    "static/js/runtime-main.647192b4.js",
+    "static/js/runtime-main.92dd83ea.js",
     "static/css/2.10331018.chunk.css",
-    "static/js/2.f44ea5dd.chunk.js",
-    "static/css/main.d0a36d07.chunk.css",
-    "static/js/main.6a630de0.chunk.js"
+    "static/js/2.ac793c10.chunk.js",
+    "static/css/main.4d3f2216.chunk.css",
+    "static/js/main.bd4e8e45.chunk.js"
   ]
 }

@@ -1,13 +1,12 @@
 import React, {Fragment} from 'react';
 import styled from "styled-components";
-import api from './../../api.js';
-import Suggestions from "./Suggestions";
+import './input.css'
 
 const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-bottom: ${state => state.isEmpty ? "5em" : "2em"};
+  padding-bottom: ${state => state.showSuggestions ? "2em" : "5em"};
 `;
 
 const InputField = styled.input`
@@ -17,70 +16,165 @@ const InputField = styled.input`
   border: solid 1px #dddddd;
   background-color: #ffffff;
   padding: 0 12pt;
-  color: #595959;
   font-size: 1.1em;
   position: absolute;
 
   :focus{
     outline: none;
+  }
 `;
 
-const UserInput = styled.span`
-    color: red;
+const SuggestionsContainer = styled.ul`
+  padding: 3em 0em 0.5em;
+  border-radius: 25px;
+  box-shadow: 0 3px 10px 0 rgba(0, 0, 0, 0.1);
+  background-color: #ffffff;
+  width: 500px;
+`;
+
+const SuggestionItem = styled.li`
+  padding: 0.5em 1em;
+  font-size: 14px;
+  list-style-type: none;
+`;
+
+const Suggestion = styled.span`
+  color: #000000;
 `;
 
 const Completion = styled.span`
-    color: b2b2b2;
+  color: #b2b2b2;
 `;
 
 class Input extends React.Component{
-    state = {
-        query: '',
-        inputText: '',
-        completion: '',
-        results: [],
-        isEmpty: true,
+    static defaultProps = {
+        suggestions: []
     };
 
-    getInfo = () => {
-        api(`/api/products/suggest?query=${this.state.query}`)
-            .then(data => {
-                console.log(data.response.suggestions.input.value);
-                this.setState({
-                    inputText: data.response.suggestions.input.value,
-                    completion: data.response.suggestions.completions[0].completion,
-                    results: data.response.suggestions.completions.map((sugg) => sugg.value),
-                    isEmpty: false,
-                })
-            })
-    };
+    constructor(props) {
+        super(props);
 
-    handleInputChange = () => {
+        this.state = {
+            activeSuggestion: 0,
+            filteredSuggestions: [],
+            showSuggestions: false,
+            userInput: "",
+        };
+    }
+
+    onChange = () => {
+        const { suggestions } = this.props;
+
+        this.props.onUserInput(
+            this.inputText.value,
+        );
+
         this.setState({
-            query: this.search.value,
-        }, () => {
-            if (this.state.query && this.state.query.length > 1) {
-                this.getInfo()
-            } else if (!this.state.query) {
+            activeSuggestion: 0,
+            showSuggestions: true,
+            userInput: this.inputText.value,
+            filteredSuggestions: suggestions,
+        });
+    };
+
+    onClick = e => {
+        this.props.onUserInput(
+            e.currentTarget.innerText,
+        );
+
+        this.setState({
+            activeSuggestion: 0,
+            filteredSuggestions: [],
+            showSuggestions: false,
+            userInput: e.currentTarget.innerText,
+        });
+    };
+
+    onKeyDown = e => {
+        const { activeSuggestion, filteredSuggestions } = this.state;
+
+        // User pressed the enter key
+        if (e.keyCode === 13) {
+            this.props.onUserInput(
+                filteredSuggestions[activeSuggestion]
+            );
+
+            this.setState({
+                activeSuggestion: 0,
+                showSuggestions: false,
+                userInput: filteredSuggestions[activeSuggestion]
+            });
+        }
+        // User pressed the up arrow
+        else if (e.keyCode === 38) {
+            if (activeSuggestion === 0) {
+                return;
             }
-        })
+
+            this.setState({ activeSuggestion: activeSuggestion - 1 });
+        }
+        // User pressed the down arrow
+        else if (e.keyCode === 40) {
+            if (activeSuggestion - 1 === filteredSuggestions.length) {
+                return;
+            }
+
+            this.setState({ activeSuggestion: activeSuggestion + 1 });
+        }
     };
 
     render() {
-        const userInput = <Fragment><UserInput>kok</UserInput><Completion>jk</Completion></Fragment>;
-        let temp;
-        if (!this.state.isEmpty){
-            temp = <Suggestions results={this.state.results} />
+        const {
+            onClick,
+            onKeyDown,
+            state: {
+                activeSuggestion,
+                filteredSuggestions,
+                showSuggestions,
+                userInput
+            }
+        } = this;
+
+        let suggestionsListComponent;
+
+        if (showSuggestions && userInput) {
+            if (filteredSuggestions.length) {
+                suggestionsListComponent = (
+                    <SuggestionsContainer>
+                        {filteredSuggestions.map((sugg, index) => {
+                            console.log(userInput);
+                            let className, suggestion, completion;
+
+                            if (index === activeSuggestion) {
+                                className = "suggestion-active";
+                            }
+
+                            suggestion = <Suggestion>{sugg.substr(0, userInput.length)}</Suggestion>;
+                            completion =  <Completion>{sugg.substr(userInput.length)}</Completion>;
+
+                            return (
+                                <SuggestionItem className={className} key={index} onClick={onClick}>
+                                    {suggestion}{completion}
+                                </SuggestionItem>
+                            );
+                        })}
+                    </SuggestionsContainer>
+                );
+            }
         }
+
         return (
-            <Container isEmpty={this.state.isEmpty}>
-                {userInput}
-                <InputField
-                    placeholder={this.props.searchPlaceholder}
-                    ref={input => this.search = input}
-                    onChange={this.handleInputChange}
-                />
-            </Container>
+            <Fragment>
+                <Container>
+                    <InputField
+                        onKeyDown={onKeyDown}
+                        value={this.props.query}
+                        ref={(input) => this.inputText = input}
+                        onChange={this.onChange}
+                    />
+                    {suggestionsListComponent}
+                </Container>
+            </Fragment>
         )
     }
 }

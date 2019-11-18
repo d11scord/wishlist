@@ -18,7 +18,7 @@ class FriendPage extends React.Component {
     componentDidMount() {
         this.setState({ isLoading: true });
         const id = this.props.match.params.id;
-        connect.sendPromise("VKWebAppGetAuthToken", {"app_id": 7177327, "scope": "friends"})
+        connect.sendPromise("VKWebAppGetAuthToken", {"app_id": 7159872, "scope": "friends"})
             .then(data => {
             return connect.sendPromise("VKWebAppCallAPIMethod", {
                 "method": "users.get",

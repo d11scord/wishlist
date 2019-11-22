@@ -1,8 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import connect from "@vkontakte/vk-connect";
+import api from './api.js';
 import App from "./App";
 import './index.css';
-import connect from "@vkontakte/vk-connect";
 
 const WISHLIST_ID = 6868134;
 const APP_ID = 7177327;
@@ -19,16 +20,21 @@ fetch('/api/user/auth' + AUTH_PARAMS, {method: 'POST'})
         console.log(result);
         window.token = result.data.token;
         return connect.sendPromise("VKWebAppGetAuthToken", {"app_id": APP_ID, "scope": "friends"});
-    })
-    .then(data => {
-    return connect.sendPromise("VKWebAppCallAPIMethod", {
-        "method": "friends.get",
-        "request_id": "0",
-        "params": {
-            "fields": ["nickname", "photo_200"],
-            "v":"5.103",
-            "access_token": data.access_token
-        }
+    }).then(data => {
+        window.access_token = data.access_token;
+        return connect.sendPromise("VKWebAppGetGeodata")
+    }).then(data => {
+        // lat: 55.7777649, long: 37.6993929
+        window.geo_data = data;
+        console.log(data);
+        return connect.sendPromise("VKWebAppCallAPIMethod", {
+            "method": "friends.get",
+            "request_id": "0",
+            "params": {
+                "fields": ["nickname", "photo_200"],
+                "v":"5.103",
+                "access_token": window.access_token,
+            }
     }).then(data_friends => {
         for (let friend of data_friends.response.items) {
             FRIENDS.push(
@@ -47,20 +53,9 @@ fetch('/api/user/auth' + AUTH_PARAMS, {method: 'POST'})
             name: `${data_user.first_name} ${data_user.last_name}`
         };
 
-        const PRODUCTS = [
-            {id: 0, img: '/img/iphone.png', title: 'iPhone XR 256GB', price: '70 000 ₽', description: 'Мобильный телефон Apple iPhone XR 256GB (желтый)'},
-            {id: 1, img: '/img/iphone.png', title: 'iPhone XR 256GB', price: '70 000 ₽', description: 'Мобильный телефон Apple iPhone XR 256GB (желтый)'},
-            {id: 2, img: '/img/iphone.png', title: 'iPhone XR 256GB', price: '70 000 ₽', description: 'Мобильный телефон Apple iPhone XR 256GB (желтый)'},
-            {id: 3, img: '/img/iphone.png', title: 'iPhone XR 256GB', price: '70 000 ₽', description: 'Мобильный телефон Apple iPhone XR 256GB (желтый)'},
-            {id: 4, img: '/img/iphone.png', title: 'iPhone XR 256GB', price: '70 000 ₽', description: 'Мобильный телефон Apple iPhone XR 256GB (желтый)'},
-            {id: 5, img: '/img/iphone.png', title: 'iPhone XR 256GB', price: '70 000 ₽', description: 'Мобильный телефон Apple iPhone XR 256GB (желтый)'},
-            {id: 6, img: '/img/iphone.png', title: 'iPhone XR 256GB', price: '70 000 ₽', description: 'Мобильный телефон Apple iPhone XR 256GB (желтый)'},
-        ];
-
         ReactDOM.render(
             <App
                 me={ME}
-                products={PRODUCTS}
                 friends={FRIENDS}
             />,
             document.getElementById('root')

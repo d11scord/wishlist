@@ -27,7 +27,7 @@ class Wishlist extends React.Component{
                     {wishList}
                 </WishlistContainer>
             );
-        }else{
+        } else {
             return (
                 <EmptyResponse text={"Кажется, товаров не найдено"}/>
             );

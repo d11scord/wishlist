@@ -18,7 +18,39 @@ class Main extends React.Component{
             isLoading: false,
             query: '',
             suggestions: [],
+            products: [],
         }
+    };
+
+    getQuery = (query) => {
+        api(`/api/products/search?query=${query}&lat=${window.geo_data.lat}&long=${window.geo_data.long}`)
+        .then(data_products => {
+            console.log(data_products);
+
+            const products = [];
+            const currency = data_products.response.response.context.currency.name;
+
+            for (let product of data_products.response.response.items) {
+                products.push(
+                    {
+                        id: product.id,
+                        img: product.photo.url,
+                        title: product.name,
+                        price: `${product.price.avg} ${currency}`,
+                        description: product.description,
+                    }
+                )
+            }
+
+            this.setState({
+                products: products,
+            })
+        });
+    }
+
+    componentWillMount = () => {
+        console.log(window.geo_data);
+        this.getQuery('iphone');
     };
 
     handleUserInput = (inputText) => {
@@ -27,8 +59,9 @@ class Main extends React.Component{
             query: inputText,
         }, () => {
             if (this.state.query && this.state.query.length > 1) {
-                this.getInfo()
+                this.getInfo();
             } else if (!this.state.query) {
+                console.log('!this.state.query');
             }
         })
     };
@@ -43,17 +76,6 @@ class Main extends React.Component{
                 })
             })
     };
-
-    // handleInputChange = () => {
-    //     this.setState({
-    //         query: this.search.value,
-    //     }, () => {
-    //         if (this.state.query && this.state.query.length > 1) {
-    //             this.getInfo()
-    //         } else if (!this.state.query) {
-    //         }
-    //     })
-    // };
 
     render(){
         const { isLoading } = this.state;
@@ -74,24 +96,11 @@ class Main extends React.Component{
                         <span className="ec ec-heart-eyes"></span>
                     </Label>
                     <Input
-                    //     suggestions={[
-                    //     "Alligator",
-                    //     "Bask",
-                    //     "Crocodilian",
-                    //     "Death Roll",
-                    //     "Eggs",
-                    //     "Jaws",
-                    //     "Reptile",
-                    //     "Solitary",
-                    //     "Tail",
-                    //     "Wetlands"
-                    // ]}
                         suggestions={this.state.suggestions}
                         query={this.state.query}
                         onUserInput={this.handleUserInput}
                         searchPlaceholder={"Введите название товара"}/>
-                    {/*{suggestions.map((sugg, idx) => <p key={idx}> {sugg} </p>)}*/}
-                    <Wishlist isMine products={this.props.products} handleMyFavorite={this.props.handleMyFavorite}/>
+                    <Wishlist isMine products={this.state.products} handleMyFavorite={this.props.handleMyFavorite}/>
                 </Fragment>
             </Content>
         )

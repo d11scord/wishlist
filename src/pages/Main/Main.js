@@ -12,76 +12,93 @@ const Content = styled.div`
 `;
 
 class Main extends React.Component{
-    constructor(props){
-        super(props);
+    constructor( props ) {
+        super( props );
+
         this.state = {
-            isLoading: false,
             query: '',
-            suggestions: [],
             products: [],
-        }
-    };
+            loading: false,
+            message: '',
+            suggestions: [],
+        };
 
-    getQuery = (query) => {
-        api(`/api/products/search?query=${query}&lat=${window.geo_data.lat}&long=${window.geo_data.long}`)
-        .then(data_products => {
-            console.log(data_products);
-
-            const products = [];
-            const currency = data_products.response.response.context.currency.name;
-
-            for (let product of data_products.response.response.items) {
-                products.push(
-                    {
-                        id: product.id,
-                        img: product.photo.url,
-                        title: product.name,
-                        price: `${product.price.avg} ${currency}`,
-                        description: product.description,
-                    }
-                )
-            }
-
-            this.setState({
-                products: products,
-            })
-        });
     }
 
-    componentWillMount = () => {
-        console.log(window.geo_data);
-        this.getQuery('iphone');
-    };
+    fetchSearchResults = ( query ) => {
+        api(`/api/products/search?query=${query}&lat=${window.geo_data.lat}&long=${window.geo_data.long}`)
+            .then(data_products => {
+                console.log(data_products);
 
-    handleUserInput = (inputText) => {
-        console.log(inputText);
-        this.setState({
-            query: inputText,
-        }, () => {
-            if (this.state.query && this.state.query.length > 1) {
-                this.getInfo();
-            } else if (!this.state.query) {
-                console.log('!this.state.query');
+                const products = [];
+                const currency = data_products.response.response.context.currency.name;
+
+                for (let product of data_products.response.response.items) {
+                    products.push(
+                        {
+                            id: product.id,
+                            img: product.photo.url,
+                            title: product.name,
+                            price: `${product.price.avg} ${currency}`,
+                            description: product.description,
+                        }
+                    )
+                }
+
+                this.getSuggestions(query);
+
+                this.setState({
+                    products: products,
+                    loading: false
+                })
+            }).catch( error => {
+            if ( error ) {
+                this.setState({
+                    loading: false,
+                    message: 'Failed to fetch the data. Please check network'
+                })
             }
-        })
+        } );
     };
 
-    getInfo = () => {
-        api(`/api/products/suggest?query=${this.state.query}`)
+    getSuggestions = (query) => {
+        api(`/api/products/suggest?query=${query}`)
             .then(data => {
                 console.log(data);
                 this.setState({
-                    inputText: data.response.suggestions.input.value,
+                    query: data.response.suggestions.input.value,
                     suggestions: data.response.suggestions.completions.map((sugg) => sugg.value),
                 })
             })
     };
 
-    render(){
-        const { isLoading } = this.state;
-        if (isLoading) {
-            return <Pending/>;
+    handleOnInputChange = ( query ) => {
+        if ( ! query ) {
+            this.setState( { query, products: [], message: '', totalPages: 0, totalResults: 0 } );
+        } else {
+            this.setState( { query, loading: true, message: '' }, () => {
+                this.fetchSearchResults( query );
+            } );
         }
+    };
+
+    componentWillMount = () => {
+        console.log(window.geo_data);
+        this.fetchSearchResults('', 'iphone');
+    };
+
+    renderSearchResults = () => {
+        const { products } = this.state;
+        if (products.length) {
+            return <Wishlist isMine products={this.state.products} handleMyFavorite={this.props.handleMyFavorite}/>
+        }
+    };
+
+    render(){
+        const { query, loading, message, } = this.state;
+        // if (loading) {
+        //     return <Pending/>;
+        // }
         return(
             <Content>
                 <Header
@@ -96,11 +113,18 @@ class Main extends React.Component{
                         <span className="ec ec-heart-eyes"></span>
                     </Label>
                     <Input
-                        suggestions={this.state.suggestions}
-                        query={this.state.query}
-                        onUserInput={this.handleUserInput}
-                        searchPlaceholder={"Введите название товара"}/>
-                    <Wishlist isMine products={this.state.products} handleMyFavorite={this.props.handleMyFavorite}/>
+                        suggestions={ this.state.suggestions }
+                        query={ query }
+                        onUserInput={ this.handleOnInputChange }
+                        searchPlaceholder={"Введите название товара"}
+                    />
+
+                    {/*	Error Message*/}
+                    { message && <p className="message">{ message }</p> }
+
+                    {/*	Result*/}
+                    { this.renderSearchResults() }
+
                 </Fragment>
             </Content>
         )

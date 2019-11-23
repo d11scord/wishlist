@@ -11,7 +11,6 @@ const WishlistContainer = styled.div`
 
 class Wishlist extends React.Component{
     render() {
-        if (this.props.products.length) {
             const items = this.props.products;
             const wishList = items.map((product) =>
                 <WishItem
@@ -27,12 +26,11 @@ class Wishlist extends React.Component{
                     {wishList}
                 </WishlistContainer>
             );
-        } else {
-            return (
-                <EmptyResponse text={"Кажется, товаров не найдено"}/>
-            );
+        // } else {
+        //     return (
+        //         <EmptyResponse text={"Кажется, товаров не найдено"}/>
+        //     );
         }
-    }
 }
 
 export default Wishlist;

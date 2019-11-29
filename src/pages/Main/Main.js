@@ -26,31 +26,44 @@ class Main extends React.Component{
     }
 
     fetchSearchResults = ( query ) => {
-        api(`/api/products/search?query=${query}&lat=${window.geo_data.lat}&long=${window.geo_data.long}`)
+        api(`/api/products/suggest?query=${query}`)
             .then(data_products => {
-                console.log(data_products);
 
-                const products = [];
-                const currency = data_products.response.response.context.currency.name;
+                api(`/api/products/search?query=${query}&lat=${window.geo_data.lat}&long=${window.geo_data.long}`)
+                    .then(data => {
 
-                for (let product of data_products.response.response.items) {
-                    products.push(
-                        {
-                            id: product.id,
-                            img: product.photo.url,
-                            title: product.name,
-                            price: `${product.price.avg} ${currency}`,
-                            description: product.description,
+                        this.setState({
+                            suggestions: data_products.response.suggestions.completions.map((sugg) => sugg.value),
+                        });
+
+                        if (data.response.response.items.length) {
+                            console.log(data);
+
+                            const products = [];
+                            const currency = data.response.response.context.currency.name;
+
+                            for (let product of data.response.response.items) {
+                                if (product.photo !== undefined ) {
+                                    products.push(
+                                        {
+                                            id: product.id,
+                                            img: product.photo.url,
+                                            title: product.name,
+                                            price: `${product.price.avg} ${currency}`,
+                                            description: product.description,
+                                        }
+                                    )
+                                }
+                            }
+
+
+                            this.setState({
+                                products: products,
+                                loading: false
+                            })
                         }
-                    )
-                }
+                    });
 
-                this.getSuggestions(query);
-
-                this.setState({
-                    products: products,
-                    loading: false
-                })
             }).catch( error => {
             if ( error ) {
                 this.setState({
@@ -61,30 +74,17 @@ class Main extends React.Component{
         } );
     };
 
-    getSuggestions = (query) => {
-        api(`/api/products/suggest?query=${query}`)
-            .then(data => {
-                console.log(data);
-                this.setState({
-                    query: data.response.suggestions.input.value,
-                    suggestions: data.response.suggestions.completions.map((sugg) => sugg.value),
-                })
-            })
-    };
-
     handleOnInputChange = ( query ) => {
         if ( ! query ) {
-            this.setState( { query, products: [], message: '', totalPages: 0, totalResults: 0 } );
+            this.setState( { query: '', products: [], message: '' } );
         } else {
-            this.setState( { query, loading: true, message: '' }, () => {
+            this.setState( { query, loading: true, message: '' });
                 this.fetchSearchResults( query );
-            } );
         }
     };
 
-    componentWillMount = () => {
-        console.log(window.geo_data);
-        this.fetchSearchResults('', 'iphone');
+    componentDidMount = () => {
+        //this.fetchSearchResults('iphone');
     };
 
     renderSearchResults = () => {

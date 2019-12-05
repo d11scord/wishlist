@@ -49,7 +49,7 @@ class Main extends React.Component{
                                             id: product.id,
                                             img: product.photo.url,
                                             title: product.name,
-                                            price: `${product.price.avg} ${currency}`,
+                                            price: `${product.price.avg}`,
                                             description: product.description,
                                         }
                                     )
@@ -84,13 +84,13 @@ class Main extends React.Component{
     };
 
     componentDidMount = () => {
-        //this.fetchSearchResults('iphone');
+        this.fetchSearchResults('iphone');
     };
 
     renderSearchResults = () => {
         const { products } = this.state;
         if (products.length) {
-            return <Wishlist isMine products={this.state.products} handleMyFavorite={this.props.handleMyFavorite}/>
+            return <Wishlist products={this.state.products} />
         }
     };
 

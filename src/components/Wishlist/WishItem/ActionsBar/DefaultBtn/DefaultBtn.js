@@ -26,14 +26,15 @@ class DefaultBtn extends React.Component{
 
     render() {
         let btn;
+        // const isFaved = this.state.isFaved;  && isFaved
         if (!this.props.inSearch) {
             btn = <DefaultButton
-                    inProfile={this.props.inProfile}
-                    inSearch={this.props.inSearch}
-                    onClick={() => this.props.handleMyFavorite(this.props.product.id)}
-                    >
-                        {this.props.text}
-                    </DefaultButton>
+                inProfile={this.props.inProfile}
+                inSearch={this.props.inSearch}
+                onClick={this.props.onClick}
+            >
+                {this.props.text}
+            </DefaultButton>
         } else {
             btn = <Link to={`/friend/${this.props.user.id}`}>
                         <DefaultButton inSearch={this.props.inSearch}>

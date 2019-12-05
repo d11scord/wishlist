@@ -19,6 +19,7 @@ fetch('/api/user/auth' + AUTH_PARAMS, {method: 'POST'})
     .then(result => {
         console.log(result);
         window.token = result.data.token;
+        window.user_id = result.data.user_id;
         return connect.sendPromise("VKWebAppGetAuthToken", {"app_id": APP_ID, "scope": "friends"});
     }).then(data => {
         window.access_token = data.access_token;

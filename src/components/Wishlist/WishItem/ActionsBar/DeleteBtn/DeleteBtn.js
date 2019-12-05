@@ -26,7 +26,7 @@ class DeleteBtn extends React.Component{
 
     render() {
         return(
-            <DeleteButton onClick={() => this.props.handleMyFavorite(this.props.product.id)}>
+            <DeleteButton onClick={this.props.onClick}>
                 {this.props.text}
             </DeleteButton>
         )

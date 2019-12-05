@@ -110,7 +110,7 @@ class Main extends React.Component{
                 <Fragment>
                     <Label>
                         <span>Вишлист</span>
-                        <span className="ec ec-heart-eyes"></span>
+                        <span className="ec ec-heart-eyes"/>
                     </Label>
                     <Input
                         suggestions={ this.state.suggestions }

@@ -28,7 +28,6 @@ class ActionsBar extends React.Component {
             price: this.props.product.price,
             name: this.props.product.title,
             photo: this.props.product.img,
-            uid:'5dc13efce7b2e26b9bd804c2',
         }).then(data_products => {
                console.log(data_products)
         });
@@ -38,7 +37,7 @@ class ActionsBar extends React.Component {
         this.setState({ isFavorite: false });
         console.log('del fav');
 
-        api(`/api/wishlist/delete`, 'POST', {id: this.props.product.id, uid:'5dc13efce7b2e26b9bd804c2'})
+        api(`/api/wishlist/delete`, 'POST', {id: this.props.product.id})
             .then(data_products => {
                console.log(data_products)
             });

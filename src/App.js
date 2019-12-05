@@ -19,28 +19,6 @@ class App extends React.Component {
         };
     }
 
-    // componentDidMount() {
-    //     const results = this.props.products.map(product => {
-    //         product.isFavorite = false;
-    //             return product;
-    //         });
-    //         this.setState({
-    //             myFavorites: results
-    //         });
-    // }
-    //
-    // handleMyFavorite = id => {
-    //     const myFavoriteItems = this.state.myFavorites.map(wishItem => {
-    //         if (wishItem.id === id) wishItem.isFavorite = !wishItem.isFavorite;
-    //         console.log(wishItem.isFavorite);
-    //         return wishItem;
-    //     });
-    //     this.setState({
-    //         myFavorites: myFavoriteItems
-    //     });
-    //     console.log(myFavoriteItems)
-    // };
-
     render(){
         return (
             <Router>

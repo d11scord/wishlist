@@ -1,6 +1,7 @@
 import React, {Fragment} from 'react';
 import styled from "styled-components";
 import './input.css'
+import api from "../../api";
 
 const Container = styled.div`
   display: flex;
@@ -59,6 +60,7 @@ class Input extends React.Component{
             filteredSuggestions: [],
             showSuggestions: false,
             userInput: "",
+            products: [],
         };
     }
 
@@ -80,6 +82,7 @@ class Input extends React.Component{
     onClick = e => {
         this.props.onUserInput(
             e.currentTarget.innerText,
+            this.getProducts(this.inputText.value)
         );
 
         this.setState({
@@ -95,8 +98,9 @@ class Input extends React.Component{
 
         // User pressed the enter key
         if (e.keyCode === 13) {
+
             this.props.onUserInput(
-                filteredSuggestions[activeSuggestion]
+                filteredSuggestions[activeSuggestion],
             );
 
             this.setState({
@@ -167,10 +171,10 @@ class Input extends React.Component{
             <Fragment>
                 <Container>
                     <InputField
-                        onKeyDown={onKeyDown}
-                        value={this.props.query}
-                        ref={(input) => this.inputText = input}
-                        onChange={this.onChange}
+                        onKeyDown={ onKeyDown }
+                        value={ this.props.query }
+                        ref={ (input) => this.inputText = input }
+                        onChange={ this.onChange }
                     />
                     {suggestionsListComponent}
                 </Container>

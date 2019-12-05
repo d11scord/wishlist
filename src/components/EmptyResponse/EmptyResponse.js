@@ -4,6 +4,7 @@ import styled from "styled-components";
 const Empty = styled.div`
   display: flex;
   flex-direction: column;
+  align-items: center;
   margin-top: 6.5em;
 `;
 const ParagraphText = styled.p`

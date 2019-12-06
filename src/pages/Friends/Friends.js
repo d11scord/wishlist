@@ -42,13 +42,13 @@ class Friends extends React.Component {
             )
         }
 
-        this.setState({friends: friends})
+        this.setState({friends: friends});
 
-        api(`/api/user/friends`, 'POST', {
+        api(`/api/user/friends?uid=5dc13efce7b2e26b9bd804c2`, 'POST', {
             ids: friends,
         }).then(data => {
             console.log(data)
-        });
+            });
         })
     }
 

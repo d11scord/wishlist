@@ -23,7 +23,7 @@ class ActionsBar extends React.Component {
         this.setState({ isFavorite: true });
         console.log('add fav');
 
-        api(`/api/wishlist/add`, 'POST', {
+        api(`/api/wishlist/add?uid=${window.user_id}`, 'POST', {
             id: this.props.product.id,
             price: this.props.product.price,
             name: this.props.product.title,

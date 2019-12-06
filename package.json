@@ -2,7 +2,7 @@
   "name": "wishlist",
   "version": "0.1.0",
   "private": true,
-  "homepage": "http://maximborodkin.github.io/wishlist-vk",
+  "homepage": "https://maximborodkin.github.io/wishlist-vk",
   "dependencies": {
     "@vkontakte/vk-connect": "^1.6.8",
     "axios": "^0.19.0",

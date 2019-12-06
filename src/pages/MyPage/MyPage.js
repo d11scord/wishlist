@@ -1,8 +1,8 @@
 import React, {Fragment} from 'react';
+import api from "../../api";
 import Header from "../../components/Header";
 import Wishlist from "../../components/Wishlist";
 import User from "../../components/User";
-import api from "../../api";
 
 class MyPage extends React.Component{
     constructor(props) {
@@ -12,9 +12,8 @@ class MyPage extends React.Component{
         }
     }
 
-    //"5dbd409de7b2e26b9ad803db"
     componentDidMount() {
-        api(`/api/wishlist/get`, 'GET', {id: window.user_id})
+        api(`/api/wishlist/get?id=${window.user_id}&uid=${window.user_id}`, 'GET', {id: window.user_id})
             .then(data_products => {
                 console.log(data_products.response.wishlist);
 

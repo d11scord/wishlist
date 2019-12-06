@@ -1,4 +1,5 @@
 import React, {Fragment} from 'react';
+import api from './../../api.js';
 import connect from "@vkontakte/vk-connect";
 import { withRouter } from "react-router-dom";
 import Header from "../../components/Header";
@@ -18,29 +19,27 @@ class FriendPage extends React.Component {
     componentDidMount() {
         this.setState({ isLoading: true });
         const id = this.props.match.params.id;
-        connect.sendPromise("VKWebAppGetAuthToken", {"app_id": window.app_id, "scope": "friends"})
-            .then(data => {
-            return connect.sendPromise("VKWebAppCallAPIMethod", {
-                "method": "users.get",
-                "request_id": "5",
-                "params": {
-                    "user_ids": id,
-                    "fields": ["photo_200"],
-                    "v": "5.103",
-                    "access_token": data.access_token,
-                }
-            }).then(friend => {
-                const frd = friend.response[0];
-                this.setState({
-                    friend: {
-                        id: frd.id,
-                        img: frd.photo_200,
-                        name: `${frd.first_name} ${frd.last_name}`
-                    },
-                    isLoading: false,
-                });
-            })
-        });
+
+        connect.sendPromise("VKWebAppCallAPIMethod", {
+            "method": "users.get",
+            "request_id": "5",
+            "params": {
+                "user_ids": id,
+                "fields": ["photo_200"],
+                "v": "5.103",
+                "access_token": window.access_token,
+            }
+        }).then(friend => {
+            const frd = friend.response[0];
+            this.setState({
+                friend: {
+                    id: frd.id,
+                    img: frd.photo_200,
+                    name: `${frd.first_name} ${frd.last_name}`
+                },
+                isLoading: false,
+            });
+        })
     }
 
     render() {

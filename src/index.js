@@ -29,40 +29,21 @@ fetch('/api/user/auth' + AUTH_PARAMS, {method: 'POST'})
         // lat: 55.7777649, long: 37.6993929
         window.geo_data = {"lat": 55.7777649, "long": 37.6993929};
         console.log(data);
-        return connect.sendPromise("VKWebAppCallAPIMethod", {
-            "method": "friends.get",
-            "request_id": "0",
-            "params": {
-                "fields": ["nickname", "photo_200"],
-                "v":"5.103",
-                "access_token": window.access_token,
-            }
-    }).then(data_friends => {
-        for (let friend of data_friends.response.items) {
-            FRIENDS.push(
-                {
-                    id: friend.id,
-                    img: friend.photo_200,
-                    name: `${friend.first_name} ${friend.last_name}`
-                }
-            )
-        }
-        return connect.sendPromise('VKWebAppGetUserInfo');
+        return connect.sendPromise('VKWebAppGetUserInfo')
     }).then(data_user => {
         const ME = {
             id: data_user.id,
             img: data_user.photo_200,
             name: `${data_user.first_name} ${data_user.last_name}`
         };
-
-        ReactDOM.render(
-            <App
-                me={ME}
-                friends={FRIENDS}
-            />,
-            document.getElementById('root')
-        );
-    });
+        
+    ReactDOM.render(
+        <App
+            me={ME}
+            //friends={FRIENDS}
+        />,
+        document.getElementById('root')
+    );
 }).catch(err => {
     debugger;
 });

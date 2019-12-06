@@ -31,8 +31,6 @@ class Friends extends React.Component {
                 "access_token": window.access_token,
             }
     }).then(data_friends => {
-        //console.log(data_friends)
-
         let friends = [];
         for (let friend of data_friends.response.items) {
             friends.push(
@@ -48,10 +46,8 @@ class Friends extends React.Component {
 
         api(`/api/user/friends`, 'POST', {
             ids: friends,
-            //uid: '5dc13efce7b2e26b9bd804c2',
         }).then(data => {
             console.log(data)
-            console.log('data')
         });
         })
     }

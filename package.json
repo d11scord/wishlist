@@ -27,7 +27,7 @@
   "eslintConfig": {
     "extends": "react-app"
   },
-  "proxy": "https://sberwish.special.ktsstudio.com/",
+  "proxy": "https://sberwish.special.ktsstudio.com",
   "browserslist": {
     "production": [
       ">0.2%",

@@ -1,5 +1,4 @@
 import React, {Fragment} from 'react';
-import api from './../../api.js';
 import connect from "@vkontakte/vk-connect";
 import { withRouter } from "react-router-dom";
 import Header from "../../components/Header";

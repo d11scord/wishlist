@@ -14,7 +14,7 @@ const AUTH_PARAMS = '?vk_access_token_settings=&vk_app_id=6868134&vk_are_notific
 //7159872   7177327
 connect.send("VKWebAppInit", {});
 
-fetch('/api/user/auth' + AUTH_PARAMS, {method: 'POST'})
+fetch('https://sberwish.special.ktsstudio.com/api/user/auth' + AUTH_PARAMS, {method: 'POST'})
     .then(result => result.json())
     .then(result => {
         console.log(result);

@@ -44,8 +44,8 @@ class Friends extends React.Component {
 
         this.setState({friends: friends});
 
-        api(`/api/user/friends?uid=5dc13efce7b2e26b9bd804c2`, 'POST', {
-            ids: friends,
+        api(`/api/user/friends`, 'POST', {
+            ids: friends.map(f => f.id),
         }).then(data => {
             console.log(data)
             });

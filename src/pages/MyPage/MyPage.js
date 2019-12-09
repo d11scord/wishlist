@@ -37,7 +37,7 @@ class MyPage extends React.Component{
 
     render(){
         return(
-            <Fragment>
+            <>
                 <Header
                     isHideLeft
                     user={this.props.user}
@@ -56,7 +56,7 @@ class MyPage extends React.Component{
                     isMine
                     products={this.state.products}
                 />
-            </Fragment>
+            </>
         )
     }
 }

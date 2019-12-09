@@ -145,7 +145,7 @@ class Input extends React.Component{
             if (filteredSuggestions.length) {
                 suggestionsListComponent = (
                     <SuggestionsContainer>
-                        {filteredSuggestions.map((sugg, index) => {
+                        {this.props.suggestions.map((sugg, index) => {
                             console.log(userInput);
                             let className, suggestion, completion;
 

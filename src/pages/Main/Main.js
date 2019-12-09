@@ -25,66 +25,60 @@ class Main extends React.Component{
 
     }
 
-    fetchSearchResults = ( query ) => {
-        api(`/api/products/suggest?query=${query}`)
-            .then(data_products => {
+    fetchSearchResults = async ( query ) => {
+        try {
+            const data_products = await api(`/api/products/suggest?query=${query}`);
+            const data = await api(`/api/products/search?query=${query}&lat=${window.geo_data.lat}&long=${window.geo_data.long}`)
+            this.setState({
+                suggestions: data_products.response.suggestions.completions.map((sugg) => sugg.value),
+            });
 
-                api(`/api/products/search?query=${query}&lat=${window.geo_data.lat}&long=${window.geo_data.long}`)
-                    .then(data => {
+            if (data.response.response.items.length) {
+                console.log(data);
 
-                        this.setState({
-                            suggestions: data_products.response.suggestions.completions.map((sugg) => sugg.value),
-                        });
+                const products = [];
+                const currency = data.response.response.context.currency.name;
 
-                        if (data.response.response.items.length) {
-                            console.log(data);
-
-                            const products = [];
-                            const currency = data.response.response.context.currency.name;
-
-                            for (let product of data.response.response.items) {
-                                if (product.photo !== undefined ) {
-                                    products.push(
-                                        {
-                                            id: product.id,
-                                            img: product.photo.url,
-                                            title: product.name,
-                                            price: `${product.price.avg}`,
-                                            description: product.description,
-                                        }
-                                    )
-                                }
+                for (let product of data.response.response.items) {
+                    if (product.photo !== undefined) {
+                        products.push(
+                            {
+                                id: product.id,
+                                img: product.photo.url,
+                                title: product.name,
+                                price: `${product.price.avg}`,
+                                description: product.description,
                             }
+                        )
+                    }
+                }
 
 
-                            this.setState({
-                                products: products,
-                                loading: false
-                            })
-                        }
-                    });
-
-            }).catch( error => {
-            if ( error ) {
                 this.setState({
-                    loading: false,
-                    message: 'Failed to fetch the data. Please check network'
+                    products: products,
+                    loading: false
                 })
             }
-        } );
+        }
+        catch ( error ) {
+            this.setState({
+                loading: false,
+                message: 'Failed to fetch the data. Please check network'
+            })
+        }
     };
 
-    handleOnInputChange = ( query ) => {
+    handleOnInputChange = async ( query ) => {
         if ( ! query ) {
             this.setState( { query: '', products: [], message: '' } );
         } else {
             this.setState( { query, loading: true, message: '' });
-                this.fetchSearchResults( query );
+            await this.fetchSearchResults( query );
         }
     };
 
-    componentDidMount = () => {
-        this.fetchSearchResults('iphone');
+    componentDidMount = async () => {
+        await this.fetchSearchResults('iphone');
     };
 
     renderSearchResults = () => {

@@ -33,6 +33,8 @@ class Wishlist extends React.Component{
                     deleteFavorite_={this.props.deleteFavorite_}
 
                     key={ product.id }
+
+                    handleFavorite={this.props.handleFavorite}
                 />
             );
             return (

@@ -63,6 +63,8 @@ class WishItem extends React.Component{
                         className="actionBar"
                         product={this.props.product}
                         deleteFavorite_={this.props.deleteFavorite_}
+
+                        handleFavorite={this.props.handleFavorite}
                     />
                 </SpanContainer>
             </WishItemContainer>

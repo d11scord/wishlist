@@ -27,6 +27,12 @@ class Main extends React.Component{
 
     fetchSearchResults = async ( query ) => {
         try {
+            if (localStorage.getItem("products")) {
+                this.setState({
+                    products: JSON.parse(localStorage.getItem("products"))
+                });
+                return;
+            }
             const data_products = await api(`/api/products/suggest?query=${query}`);
             const data = await api(`/api/products/search?query=${query}&lat=${window.geo_data.lat}&long=${window.geo_data.long}`)
             this.setState({
@@ -48,6 +54,8 @@ class Main extends React.Component{
                                 title: product.name,
                                 price: `${product.price.avg}`,
                                 description: product.description,
+
+                                isFavorite: false,
                             }
                         )
                     }
@@ -81,10 +89,25 @@ class Main extends React.Component{
         await this.fetchSearchResults('iphone');
     };
 
+    componentWillUnmount() {
+        localStorage.setItem("products", JSON.stringify(this.state.products));
+    }
+
+    handleFavorite = id => {
+        console.log('ZHopa')
+        const favoritedProducts = this.state.products.map(product => {
+            if (product.id === id) product.isFavorite = !product.isFavorite;
+            return product;
+            });
+        this.setState({
+            products: favoritedProducts
+        });
+    };
+
     renderSearchResults = () => {
         const { products } = this.state;
         if (products.length) {
-            return <Wishlist products={this.state.products} />
+            return <Wishlist products={this.state.products} handleFavorite={this.handleFavorite} />
         }
     };
 

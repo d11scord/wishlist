@@ -17,12 +17,12 @@ class ActionsBar extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            isFavorite: false
+            // isFavorite: false
         };
     };
 
     addFavorite = () => {
-        this.setState({ isFavorite: true });
+        // this.setState({ isFavorite: true });
         console.log('add fav');
 
         //myFavorites.push()
@@ -33,17 +33,21 @@ class ActionsBar extends React.Component {
             name: this.props.product.title,
             photo: this.props.product.img,
         }).then(data_products => {
-               console.log(data_products)
+                console.log(data_products)
+
+                this.props.handleFavorite(this.props.product.id)
         });
     };
 
     deleteFavorite = () => {
-        this.setState({ isFavorite: false });
+        // this.setState({ isFavorite: false });
         console.log('del fav');
 
         api(`/api/wishlist/delete`, 'POST', {id: this.props.product.id})
             .then(data_products => {
                 console.log(data_products);
+
+                this.props.handleFavorite(this.props.product.id)
 
             if (this.props.isMine){
                 this.props.deleteFavorite_(this.props.product.id);
@@ -53,7 +57,7 @@ class ActionsBar extends React.Component {
 
     render() {
         let favBtn;
-        const { isFavorite } = this.state;
+        const isFavorite = this.props.product.isFavorite;
 
         if (isFavorite || this.props.isMine) {
             favBtn = <DeleteBtn
@@ -61,6 +65,8 @@ class ActionsBar extends React.Component {
                 text={this.props.text}
                 product={this.props.product}
                 onClick={this.deleteFavorite}
+
+                //onClick={() => this.props.handleFavorite(this.props.product.id)}
             />
         } else {
             favBtn = <DefaultBtn
@@ -68,11 +74,15 @@ class ActionsBar extends React.Component {
                 text={this.props.text}
                 product={this.props.product}
                 onClick={this.addFavorite}
+
+                // onClick={() => this.props.handleFavorite(this.props.product.id)}
             />
         }
         return (
             <ActionBar
                 deleteFavorite_={this.props.deleteFavorite_}
+
+                handleFavorite={this.props.handleFavorite}
                 >
                 {favBtn}
             </ActionBar>

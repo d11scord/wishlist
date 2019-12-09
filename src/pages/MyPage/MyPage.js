@@ -25,8 +25,6 @@ class MyPage extends React.Component{
                             img: product.photo,
                             title: product.name,
                             price: product.price,
-
-                            isFavorite: false,
                         }
                     )
                 }

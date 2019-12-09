@@ -30,6 +30,7 @@ class Wishlist extends React.Component{
                     isMine={ this.props.isMine }
                     text={ this.props.text }
                     product={ product }
+                    deleteFavorite_={this.props.deleteFavorite_}
 
                     key={ product.id }
                 />

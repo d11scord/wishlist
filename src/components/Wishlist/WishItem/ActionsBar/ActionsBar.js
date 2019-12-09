@@ -11,6 +11,8 @@ const ActionBar = styled.div`
   padding-top: 0.5em;
 `;
 
+//let myFavorites = [];
+
 class ActionsBar extends React.Component {
     constructor(props) {
         super(props);
@@ -22,6 +24,8 @@ class ActionsBar extends React.Component {
     addFavorite = () => {
         this.setState({ isFavorite: true });
         console.log('add fav');
+
+        //myFavorites.push()
 
         api(`/api/wishlist/add?uid=${window.user_id}`, 'POST', {
             id: this.props.product.id,
@@ -39,10 +43,13 @@ class ActionsBar extends React.Component {
 
         api(`/api/wishlist/delete`, 'POST', {id: this.props.product.id})
             .then(data_products => {
-               console.log(data_products)
+                console.log(data_products);
+
+            if (this.props.isMine){
+                this.props.deleteFavorite_(this.props.product.id);
+            }
             });
     };
-
 
     render() {
         let favBtn;
@@ -64,7 +71,9 @@ class ActionsBar extends React.Component {
             />
         }
         return (
-            <ActionBar>
+            <ActionBar
+                deleteFavorite_={this.props.deleteFavorite_}
+                >
                 {favBtn}
             </ActionBar>
         )

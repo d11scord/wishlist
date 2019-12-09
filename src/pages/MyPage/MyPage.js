@@ -25,6 +25,8 @@ class MyPage extends React.Component{
                             img: product.photo,
                             title: product.name,
                             price: product.price,
+
+                            isFavorite: false,
                         }
                     )
                 }
@@ -33,6 +35,12 @@ class MyPage extends React.Component{
                     products: products,
                 })
             });
+    }
+
+    deleteFavorite_ = (id) => {
+        this.setState(prevState => ({
+            products: prevState.products.filter(el => el.id !== id)
+        }));
     }
 
     render(){
@@ -55,6 +63,7 @@ class MyPage extends React.Component{
                 <Wishlist
                     isMine
                     products={this.state.products}
+                    deleteFavorite_={this.deleteFavorite_}
                 />
             </>
         )

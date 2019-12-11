@@ -33,21 +33,28 @@ class Friends extends React.Component {
     }).then(data_friends => {
         let friends = [];
         for (let friend of data_friends.response.items) {
-            friends.push(
-                {
-                    id: friend.id,
-                    img: friend.photo_200,
-                    name: `${friend.first_name} ${friend.last_name}`
-                }
-            )
+            friends.push(friend.id)
         }
 
-        this.setState({friends: friends});
+        console.log(friends);
 
         api(`/api/user/friends`, 'POST', {
-            ids: friends.map(f => f.id),
-        }).then(data => {
-            console.log(data)
+            ids: friends,
+        }).then(data_friends => {
+            console.log(data_friends.response.friends)
+
+            let friends = [];
+            for (let friend of data_friends.response.friends) {
+                friends.push(
+                    {
+                        id: friend.id,
+                        img: friend.photo_100,
+                        name: `${friend.first_name} ${friend.last_name}`
+                    }
+                )
+            }
+
+            this.setState({ friends: friends });
             });
         })
     }

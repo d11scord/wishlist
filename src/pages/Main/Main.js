@@ -27,48 +27,48 @@ class Main extends React.Component{
 
     fetchSearchResults = async ( query ) => {
         try {
-            if (localStorage.getItem("products")) {
-                this.setState({
-                    products: JSON.parse(localStorage.getItem("products"))
-                });
-                return;
-            }
+            let myFavorites = await api(`/api/wishlist/get?id=${window.user_id}&uid=${window.user_id}`, 'GET', {id: window.user_id});
+            myFavorites = myFavorites.response.wishlist.map(f => f.id);
+            console.log(myFavorites);
+
             const data_products = await api(`/api/products/suggest?query=${query}`);
-            const data = await api(`/api/products/search?query=${query}&lat=${window.geo_data.lat}&long=${window.geo_data.long}`)
             this.setState({
                 suggestions: data_products.response.suggestions.completions.map((sugg) => sugg.value),
             });
 
-            if (data.response.response.items.length) {
-                console.log(data);
+            const data = await api(`/api/products/search?query=${query}&lat=${window.geo_data.lat}&long=${window.geo_data.long}`);
+                if (data.response.response.items.length) {
+                    console.log(data);
 
-                const products = [];
-                const currency = data.response.response.context.currency.name;
+                    const products = [];
+                    const currency = data.response.response.context.currency.name;
 
-                for (let product of data.response.response.items) {
-                    if (product.photo !== undefined) {
-                        products.push(
-                            {
-                                id: product.id,
-                                img: product.photo.url,
-                                title: product.name,
-                                price: `${product.price.avg}`,
-                                description: product.description,
+                    for (let product of data.response.response.items) {
+                        if (product.photo !== undefined) {
+                            const isFavorite = myFavorites.includes(product.id);
 
-                                isFavorite: false,
-                            }
-                        )
+                            products.push(
+                                {
+                                    id: product.id,
+                                    img: product.photo.url,
+                                    title: product.name,
+                                    price: `${product.price.avg}`,
+                                    description: product.description,
+
+                                    isFavorite: isFavorite,
+                                }
+                            )
+                        }
                     }
+
+                    this.setState({
+                        products: products,
+                        loading: false
+                    })
                 }
-
-
-                this.setState({
-                    products: products,
-                    loading: false
-                })
             }
-        }
-        catch ( error ) {
+        catch (error) {
+            debugger;
             this.setState({
                 loading: false,
                 message: 'Failed to fetch the data. Please check network'
@@ -77,10 +77,10 @@ class Main extends React.Component{
     };
 
     handleOnInputChange = async ( query ) => {
-        if ( ! query ) {
-            this.setState( { query: '', products: [], message: '' } );
+        if (!query) {
+            this.setState({ query: '', products: [], message: '' });
         } else {
-            this.setState( { query, loading: true, message: '' });
+            this.setState({ query, loading: true, message: '' });
             await this.fetchSearchResults( query );
         }
     };
@@ -89,9 +89,9 @@ class Main extends React.Component{
         await this.fetchSearchResults('iphone');
     };
 
-    componentWillUnmount() {
-        localStorage.setItem("products", JSON.stringify(this.state.products));
-    }
+    // componentWillUnmount() {
+    //     localStorage.setItem("products", JSON.stringify(this.state.products));
+    // }
 
     handleFavorite = id => {
         console.log('ZHopa')

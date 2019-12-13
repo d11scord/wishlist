@@ -49,7 +49,9 @@ class Friends extends React.Component {
                     {
                         id: friend.id,
                         img: friend.photo_100,
-                        name: `${friend.first_name} ${friend.last_name}`
+                        name: `${friend.first_name} ${friend.last_name}`,
+
+                        _id: friend._id,
                     }
                 )
             }

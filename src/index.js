@@ -25,7 +25,6 @@ fetch('api/user/auth' + AUTH_PARAMS, {method: 'POST'})
         window.access_token = data.access_token;
         return connect.sendPromise("VKWebAppGetGeodata")
     }).then(data => {
-        // lat: 55.7777649, long: 37.6993929
         window.geo_data = {"lat": 55.7777649, "long": 37.6993929};
         console.log(data);
         return connect.sendPromise('VKWebAppGetUserInfo')

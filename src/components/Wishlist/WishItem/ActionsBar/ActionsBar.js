@@ -11,48 +11,70 @@ const ActionBar = styled.div`
   padding-top: 0.5em;
 `;
 
-//let myFavorites = [];
-
 class ActionsBar extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            // isFavorite: false
-        };
-    };
 
-    addFavorite = () => {
-        // this.setState({ isFavorite: true });
+    addFavorite = async () => {
         console.log('add fav');
-
-        //myFavorites.push()
-
-        api(`/api/wishlist/add?uid=${window.user_id}`, 'POST', {
+        const data_products = await api(`/api/wishlist/add?uid=${window.user_id}`, 'POST', {
             id: this.props.product.id,
             price: this.props.product.price,
             name: this.props.product.title,
             photo: this.props.product.img,
-        }).then(data_products => {
-                console.log(data_products)
-
-                this.props.handleFavorite(this.props.product.id)
         });
+
+        console.log(data_products)
+        this.props.handleFavorite(this.props.product.id)
     };
 
-    deleteFavorite = () => {
-        // this.setState({ isFavorite: false });
+    deleteFavorite = async () => {
         console.log('del fav');
 
-        api(`/api/wishlist/delete`, 'POST', {id: this.props.product.id})
-            .then(data_products => {
-                console.log(data_products);
+        const data_products = await api(
+            `/api/wishlist/delete`,
+            'POST',
+            { id: this.props.product.id }
+        );
+        console.log(data_products);
 
-                this.props.handleFavorite(this.props.product.id)
+        if (!this.props.isMine){
+            this.props.handleFavorite(this.props.product.id)
+        }
 
-            if (this.props.isMine){
-                this.props.deleteFavorite_(this.props.product.id);
+        if (this.props.isMine || !this.props.isFriend){
+            this.props.refreshFavorite(this.props.product.id, this.props.product.booked_by);
+        }
+    };
+
+    bookGift = async () => {
+        console.log('add gift');
+
+        const data_products = await api(
+            `/api/wishlist/book`,
+            'POST',
+            { id: this.props.product.id,
+              user_id: this.props.friendId,
             }
-            });
+        );
+        console.log(data_products);
+
+        this.props.refreshFriend(this.props.product.id, this.props.product.booked_by);
+    };
+
+    unbookGift = async () => {
+        console.log('del gift');
+
+        const data_products = await api(
+            `/api/wishlist/unbook`,
+            'POST',
+            { id: this.props.product.id,
+              user_id: this.props.friendId,
+            }
+        );
+        console.log(data_products);
+
+        if (this.props.isFriend){
+            this.props.refreshFriend(this.props.product.id, this.props.product.booked_by);
+        }
     };
 
     render() {
@@ -65,8 +87,31 @@ class ActionsBar extends React.Component {
                 text={this.props.text}
                 product={this.props.product}
                 onClick={this.deleteFavorite}
-
-                //onClick={() => this.props.handleFavorite(this.props.product.id)}
+            />
+        } else if (this.props.product.booked_by === window.user_id) {
+            favBtn = <DeleteBtn
+                isFriend={this.props.isFriend}
+                friendId={this.props.friendId}
+                product={this.props.product}
+                onClick={this.unbookGift}
+            />
+        } else if (this.props.isFriend && this.props.product.booked_by !== false) {
+            favBtn = <>
+                <DeleteBtn
+                    isFriend={this.props.isFriend}
+                    friendId={this.props.friendId}
+                    product={this.props.product}
+                    onClick={this.unbookGift}
+                />
+                <GiftBtn />
+            </>
+        } else if (this.props.isFriend) {
+            favBtn = <DefaultBtn
+                isFriend={this.props.isFriend}
+                friendId={this.props.friendId}
+                text={this.props.text}
+                product={this.props.product}
+                onClick={this.bookGift}
             />
         } else {
             favBtn = <DefaultBtn
@@ -74,15 +119,15 @@ class ActionsBar extends React.Component {
                 text={this.props.text}
                 product={this.props.product}
                 onClick={this.addFavorite}
-
-                // onClick={() => this.props.handleFavorite(this.props.product.id)}
             />
         }
         return (
             <ActionBar
-                deleteFavorite_={this.props.deleteFavorite_}
-
                 handleFavorite={this.props.handleFavorite}
+
+                refreshFavorite={this.props.refreshFavorite}
+
+                refreshFriend={this.props.refreshFriend}
                 >
                 {favBtn}
             </ActionBar>

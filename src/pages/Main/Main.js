@@ -25,7 +25,7 @@ class Main extends React.Component{
 
     }
 
-    fetchSearchResults = async ( query ) => {
+    fetchSearchResults = async (query) => {
         try {
             let myFavorites = await api(`/api/wishlist/get?id=${window.user_id}&uid=${window.user_id}`, 'GET', {id: window.user_id});
             myFavorites = myFavorites.response.wishlist.map(f => f.id);
@@ -76,7 +76,7 @@ class Main extends React.Component{
         }
     };
 
-    handleOnInputChange = async ( query ) => {
+    handleOnInputChange = async (query) => {
         if (!query) {
             this.setState({ query: '', products: [], message: '' });
         } else {
@@ -88,10 +88,6 @@ class Main extends React.Component{
     componentDidMount = async () => {
         await this.fetchSearchResults('iphone');
     };
-
-    // componentWillUnmount() {
-    //     localStorage.setItem("products", JSON.stringify(this.state.products));
-    // }
 
     handleFavorite = id => {
         console.log('ZHopa')

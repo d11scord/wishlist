@@ -26,7 +26,6 @@ class DefaultBtn extends React.Component{
 
     render() {
         let btn;
-        // const isFaved = this.state.isFaved;  && isFaved
         if (!this.props.inSearch) {
             btn = <DefaultButton
                 inProfile={this.props.inProfile}
@@ -36,7 +35,10 @@ class DefaultBtn extends React.Component{
                 {this.props.text}
             </DefaultButton>
         } else {
-            btn = <Link to={`/friend/${this.props.user.id}`}>
+            btn = <Link to={{
+                    pathname: `/friend/${this.props.user.id}`,
+                    friend: this.props.user
+                }}>
                         <DefaultButton inSearch={this.props.inSearch}>
                             {"Узнать что подарить"}
                         </DefaultButton>

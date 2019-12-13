@@ -59,12 +59,16 @@ class WishItem extends React.Component{
                     <Description>{this.props.product.description}</Description>
                     <ActionsBar
                         isMine={this.props.isMine}
+                        isFriend={this.props.isFriend}
+                        friendId={this.props.friendId}
+
                         text={this.props.text}
                         className="actionBar"
                         product={this.props.product}
-                        deleteFavorite_={this.props.deleteFavorite_}
 
                         handleFavorite={this.props.handleFavorite}
+                        refreshFavorite={this.props.refreshFavorite}
+                        refreshFriend={this.props.refreshFriend}
                     />
                 </SpanContainer>
             </WishItemContainer>

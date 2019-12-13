@@ -17,52 +17,61 @@ class FriendPage extends React.Component {
         };
     }
 
-    componentDidMount() {
+    componentDidMount = async () => {
         this.setState({ isLoading: true });
-        const id = this.props.match.params.id;
 
-        connect.sendPromise("VKWebAppCallAPIMethod", {
-            "method": "users.get",
-            "request_id": "5",
-            "params": {
-                "user_ids": id,
-                "fields": ["photo_200"],
-                "v": "5.103",
-                "access_token": window.access_token,
-            }
-        }).then(friend => {
-            const frd = friend.response[0];
-            this.setState({
-                friend: {
-                    id: frd.id,
-                    img: frd.photo_200,
-                    name: `${frd.first_name} ${frd.last_name}`
-                },
-                isLoading: false,
+        const friend = this.props.location.friend;
+
+        this.setState({
+            friend: {
+                id: friend.id,
+                img: friend.img,
+                name: friend.name,
+
+                _id: friend._id,
+            },
+            isLoading: false,
+        });
+
+        const friend_wishlist = await api(
+            `/api/wishlist/get?id=${friend._id}&uid=${friend._id}`,
+            'GET',
+            { id: `${friend._id}` }
+        );
+        console.log(friend_wishlist);
+
+        const products = [];
+        for (let product of friend_wishlist.response.wishlist) {
+            products.push(
+                {
+                    id: product.id,
+                    img: product.photo,
+                    title: product.name,
+                    price: product.price,
+
+                    booked_by: product.booked_by || false,
+                }
+            )
+        }
+
+        this.setState({
+            products: products,
+        });
+
+        console.log(this.state.products);
+    }
+
+    refreshFriend = (id, booked_by) => {
+        console.log('joasdasdsad');
+        console.log(booked_by);
+        const favoritedProducts = this.state.products.map(product => {
+                if (product.id === id && product.booked_by === booked_by) product.booked_by = false;
+                if (product.id === id && booked_by === false) product.booked_by = window.user_id;
+                return product;
             });
-
-            //5dbd409de7b2e26b9ad803db
-            api(`/api/wishlist/get?id=5dbd409de7b2e26b9ad803db&uid=5dbd409de7b2e26b9ad803db`, 'GET', {id: '5dbd409de7b2e26b9ad803db'})
-                .then(data_products => {
-                    console.log(data_products);
-
-                    const products = [];
-                    for (let product of data_products.response.wishlist) {
-                        products.push(
-                            {
-                                id: product.id,
-                                img: product.photo,
-                                title: product.name,
-                                price: product.price,
-                            }
-                        )
-                    }
-
-                    this.setState({
-                        products: products,
-                    })
-                });
-        })
+        this.setState({
+            products: favoritedProducts
+        });
     }
 
     render() {
@@ -86,8 +95,12 @@ class FriendPage extends React.Component {
                     user={this.state.friend}
                 />
                 <Wishlist
+                    isFriend
                     text={"Подарю"}
                     products={this.state.products}
+                    friendId={this.state.friend._id}
+
+                    refreshFriend={this.refreshFriend}
                 />
             </Fragment>
         )

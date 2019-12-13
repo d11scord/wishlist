@@ -1,4 +1,4 @@
-import React, {Fragment} from 'react';
+import React from 'react';
 import api from "../../api";
 import Header from "../../components/Header";
 import Wishlist from "../../components/Wishlist";
@@ -12,30 +12,33 @@ class MyPage extends React.Component{
         }
     }
 
-    componentDidMount() {
-        api(`/api/wishlist/get?id=${window.user_id}&uid=${window.user_id}`, 'GET', {id: window.user_id})
-            .then(data_products => {
-                console.log(data_products.response.wishlist);
+    componentDidMount = async () => {
+        const data_products = await api(
+            `/api/wishlist/get?id=${window.user_id}&uid=${window.user_id}`,
+            'GET',
+            { id: window.user_id }
+        );
 
-                const products = [];
-                for (let product of data_products.response.wishlist) {
-                    products.push(
-                        {
-                            id: product.id,
-                            img: product.photo,
-                            title: product.name,
-                            price: product.price,
-                        }
-                    )
+        console.log(data_products);
+
+        const products = [];
+        for (let product of data_products.response.wishlist) {
+            products.push(
+                {
+                    id: product.id,
+                    img: product.photo,
+                    title: product.name,
+                    price: product.price,
                 }
+            )
+        }
 
-                this.setState({
-                    products: products,
-                })
-            });
+        this.setState({
+            products: products,
+        })
     }
 
-    deleteFavorite_ = (id) => {
+    refreshFavorite = (id) => {
         this.setState(prevState => ({
             products: prevState.products.filter(el => el.id !== id)
         }));
@@ -61,7 +64,7 @@ class MyPage extends React.Component{
                 <Wishlist
                     isMine
                     products={this.state.products}
-                    deleteFavorite_={this.deleteFavorite_}
+                    refreshFavorite={this.refreshFavorite}
                 />
             </>
         )

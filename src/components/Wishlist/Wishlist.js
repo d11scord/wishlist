@@ -28,13 +28,18 @@ class Wishlist extends React.Component{
             const wishList = items.map((product) =>
                 <WishItem
                     isMine={ this.props.isMine }
+                    isFriend={ this.props.isFriend }
+                    friendId={ this.props.friendId }
+
                     text={ this.props.text }
                     product={ product }
-                    deleteFavorite_={this.props.deleteFavorite_}
 
-                    key={ product.id }
 
                     handleFavorite={this.props.handleFavorite}
+                    refreshFavorite={ this.props.refreshFavorite }
+                    refreshFriend={this.props.refreshFriend}
+
+                    key={ product.id }
                 />
             );
             return (

@@ -1,6 +1,6 @@
 import React from 'react';
-import DefaultBtn from "./DefaultBtn";
-import DeleteBtn from "./DeleteBtn";
+import DefaultBtn from "../../../DefaultBtn";
+import DeleteBtn from "../../../DeleteBtn";
 import GiftBtn from "./GiftBtn";
 import api from "../../../../api";
 import { ActionBar } from './ActionsBar-styles.js';

@@ -3,7 +3,6 @@ import api from './../../api.js';
 import Header from "../../components/Header";
 import Input from "../../components/Input";
 import Wishlist from "../../components/Wishlist";
-import Pending from "../../components/Pending";
 import { Label } from './../../styles/styles.js';
 import { Content } from './Main-styles.js'
 
@@ -53,7 +52,7 @@ class Main extends React.Component{
                                     id: product.id,
                                     img: product.photo.url,
                                     title: product.name,
-                                    price: `${product.price.avg}`,
+                                    price: `${product.price.avg} ${currency}`,
                                     description: product.description,
 
                                     isFavorite: isFavorite,
@@ -111,10 +110,7 @@ class Main extends React.Component{
     };
 
     render(){
-        const { query, loading, message, } = this.state;
-        // if (loading) {
-        //     return <Pending/>;
-        // }
+        const { query, message } = this.state;
         return(
             <Content>
                 <Header

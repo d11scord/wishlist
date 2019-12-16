@@ -1,6 +1,6 @@
 import React from 'react';
-import Avatar from "./Avatar";
-import DefaultBtn from "../Wishlist/WishItem/ActionsBar/DefaultBtn";
+import Avatar from "../Avatar";
+import DefaultBtn from "../DefaultBtn";
 import {
     ProfileDetails,
     ProfileDetailsLeft,

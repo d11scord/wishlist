@@ -9,6 +9,7 @@
     "bootstrap": "^4.3.1",
     "gh-pages": "^2.1.1",
     "lodash": "latest",
+    "prettier": "^1.19.1",
     "react": "^16.10.2",
     "react-dom": "^16.10.2",
     "react-md": "^1.12.3",

@@ -34,13 +34,13 @@ class MyPage extends React.Component{
         this.setState({
             products: products,
         })
-    }
+    };
 
     refreshFavorite = (id) => {
         this.setState(prevState => ({
             products: prevState.products.filter(el => el.id !== id)
         }));
-    }
+    };
 
     render(){
         return(

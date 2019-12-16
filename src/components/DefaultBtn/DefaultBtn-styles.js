@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Button } from "./../../../../../styles/styles";
+import { Button } from "../../styles/styles";
 
 const DefaultButton = styled(Button)`
   padding: ${props => props.inSearch ? "0.5rem" : "0.8rem"} ${props => props.inProfile};

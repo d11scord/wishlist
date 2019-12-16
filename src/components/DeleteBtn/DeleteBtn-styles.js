@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Button } from "./../../../../../styles/styles.js";
+import { Button } from "../../styles/styles.js";
 
 const DeleteButton = styled(Button)`
 padding: ${props => props.size || "0.8em"};

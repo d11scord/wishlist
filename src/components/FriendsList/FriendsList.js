@@ -1,18 +1,10 @@
 import React from 'react';
-import styled from "styled-components";
 import EmptyResponse from "../EmptyResponse";
+import {
+    ContentContainer,
+    FriendsContainer
+} from './FriendsList-styles';
 import User from './../User/';
-import DeleteBtn from "../Wishlist/WishItem/ActionsBar/DeleteBtn";
-
-const ContentContainer = styled.div`
-    align-self: center;
-`;
-
-const FriendsContainer = styled.div`
-    display: flex;
-    flex-direction: column;
-    align-items: start;
-`;
 
 class FriendsList extends React.Component {
     constructor(props) {
@@ -33,7 +25,6 @@ class FriendsList extends React.Component {
                     <FriendsContainer>
                         {friendsList}
                     </FriendsContainer>
-                    <DeleteBtn text={"Показать ещё"}/>
                 </ContentContainer>
             );
         } else {

@@ -1,16 +1,11 @@
 import React from 'react';
 import connect from "@vkontakte/vk-connect";
 import api from './../../api.js';
-import styled from "styled-components";
 import Header from "../../components/Header";
 import Input from './../../components/Input/Input';
 import FriendsList from "../../components/FriendsList";
 import { Label } from './../../styles/styles.js';
-
-const FriendsWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-`;
+import { FriendsWrapper } from './Friends-styles.js'
 
 class Friends extends React.Component {
     constructor(props) {

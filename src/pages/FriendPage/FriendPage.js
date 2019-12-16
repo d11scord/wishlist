@@ -1,5 +1,4 @@
-import React, {Fragment} from 'react';
-import connect from "@vkontakte/vk-connect";
+import React from 'react';
 import { withRouter } from "react-router-dom";
 import Header from "../../components/Header";
 import Wishlist from "../../components/Wishlist";
@@ -75,7 +74,7 @@ class FriendPage extends React.Component {
             return <Pending/>;
         }
         return (
-            <Fragment>
+            <>
                 <Header
                     isFriendPage
                     user={this.props.user}
@@ -96,7 +95,7 @@ class FriendPage extends React.Component {
 
                     refreshFriend={this.refreshFriend}
                 />
-            </Fragment>
+            </>
         )
     }
 }

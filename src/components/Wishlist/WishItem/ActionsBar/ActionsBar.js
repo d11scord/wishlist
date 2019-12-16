@@ -1,15 +1,9 @@
 import React from 'react';
-import styled from "styled-components";
 import DefaultBtn from "./DefaultBtn";
 import DeleteBtn from "./DeleteBtn";
 import GiftBtn from "./GiftBtn";
 import api from "../../../../api";
-
-const ActionBar = styled.div`
-  display: flex;
-  justify-content: space-between;
-  padding-top: 0.5em;
-`;
+import { ActionBar } from './ActionsBar-styles.js';
 
 class ActionsBar extends React.Component {
 

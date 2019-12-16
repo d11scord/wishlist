@@ -1,13 +1,7 @@
 import React from 'react';
-import styled from "styled-components";
 import WishItem from './WishItem/WishItem.js';
 import EmptyResponse from "../EmptyResponse";
-
-const WishlistContainer = styled.div`
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-`;
+import { WishlistContainer } from './Wishlist-styles.js'
 
 class Wishlist extends React.Component{
     static defaultProps = {

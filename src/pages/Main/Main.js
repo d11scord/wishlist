@@ -1,15 +1,11 @@
 import React from 'react';
 import api from './../../api.js';
-import styled from "styled-components";
 import Header from "../../components/Header";
 import Input from "../../components/Input";
 import Wishlist from "../../components/Wishlist";
 import Pending from "../../components/Pending";
 import { Label } from './../../styles/styles.js';
-
-const Content = styled.div`
-  padding: 0em 0em 1.5em;
-`;
+import { Content } from './Main-styles.js'
 
 class Main extends React.Component{
     constructor( props ) {

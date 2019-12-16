@@ -1,4 +1,4 @@
-import React, {Fragment} from 'react';
+import React from 'react';
 import styled from "styled-components";
 import Avatar from "../User/Avatar";
 import { ColoredLink } from './../../styles/styles.js';
@@ -38,7 +38,7 @@ const AvatarContainer = styled.div`
 class Header extends React.Component {
     render(){
         return (
-            <Fragment>
+            <>
                 <NavHeader>
                     <NavLeft>
                         <Avatar src={this.props.user.img} isHide={this.props.isHideLeft} avatarWidth="40px"/>
@@ -62,7 +62,7 @@ class Header extends React.Component {
                         </AvatarContainer>
                     </NavRight>
                 </NavHeader>
-            </Fragment>
+            </>
         );
     }
 }

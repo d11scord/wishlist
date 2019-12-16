@@ -38,7 +38,6 @@ class FriendPage extends React.Component {
             'GET',
             { id: `${friend._id}` }
         );
-        console.log(friend_wishlist);
 
         const products = [];
         for (let product of friend_wishlist.response.wishlist) {
@@ -57,13 +56,9 @@ class FriendPage extends React.Component {
         this.setState({
             products: products,
         });
-
-        console.log(this.state.products);
     }
 
     refreshFriend = (id, booked_by) => {
-        console.log('joasdasdsad');
-        console.log(booked_by);
         const favoritedProducts = this.state.products.map(product => {
                 if (product.id === id && product.booked_by === booked_by) product.booked_by = false;
                 if (product.id === id && booked_by === false) product.booked_by = window.user_id;
@@ -89,7 +84,6 @@ class FriendPage extends React.Component {
                     linkToRight={"/friendslist"}
                 />
                 <User
-                    wantText={"Хочет"}
                     text={"Поделиться"}
                     avatarWidth="150px"
                     user={this.state.friend}

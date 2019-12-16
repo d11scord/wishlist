@@ -39,14 +39,12 @@ class DefaultBtn extends React.Component{
                     pathname: `/friend/${this.props.user.id}`,
                     friend: this.props.user
                 }}>
-                        <DefaultButton inSearch={this.props.inSearch}>
+                        <DefaultButton inSearch={this.props.inSearch} >
                             {"Узнать что подарить"}
                         </DefaultButton>
                     </Link>
                 }
-        return(
-            btn
-        )
+        return btn
     }
 }
 

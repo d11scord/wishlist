@@ -1,7 +1,6 @@
 import React, {Fragment} from 'react';
 import styled from "styled-components";
-import './input.css'
-import api from "../../api";
+import './input.css';
 
 const Container = styled.div`
   display: flex;

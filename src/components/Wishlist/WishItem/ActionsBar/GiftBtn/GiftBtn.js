@@ -10,7 +10,6 @@ const GiftButton = styled.button`
     cursor: help;
     float: right;
     text-align: center;
-    // display: inline-block;
     margin-left: 10pt;
 
     img {
@@ -29,7 +28,10 @@ class GiftBtn extends React.Component{
     render() {
         return(
             <GiftButton>
-                <img src={process.env.PUBLIC_URL + '/img/giftbox.png'} alt="gift"/>
+                <img
+                    src={process.env.PUBLIC_URL + '/img/giftbox.png'}
+                    alt="gift"
+                    />
             </GiftButton>
         )
     }

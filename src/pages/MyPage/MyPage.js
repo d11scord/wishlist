@@ -19,8 +19,6 @@ class MyPage extends React.Component{
             { id: window.user_id }
         );
 
-        console.log(data_products);
-
         const products = [];
         for (let product of data_products.response.wishlist) {
             products.push(
@@ -56,7 +54,6 @@ class MyPage extends React.Component{
                     linkToRight={"/friendslist"}
                 />
                 <User
-                    wantText={"Хочу"}
                     text={"Поделиться"}
                     avatarWidth="150px"
                     user={this.props.user}

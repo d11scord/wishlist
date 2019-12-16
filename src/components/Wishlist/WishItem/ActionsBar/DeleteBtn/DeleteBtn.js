@@ -26,7 +26,7 @@ class DeleteBtn extends React.Component{
 
     render() {
         return(
-            <DeleteButton onClick={this.props.onClick}>
+            <DeleteButton onClick={this.props.onClick} >
                 {this.props.text}
             </DeleteButton>
         )

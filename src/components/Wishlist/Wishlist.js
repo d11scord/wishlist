@@ -2,7 +2,6 @@ import React from 'react';
 import styled from "styled-components";
 import WishItem from './WishItem/WishItem.js';
 import EmptyResponse from "../EmptyResponse";
-import api from "../../api";
 
 const WishlistContainer = styled.div`
     display: flex;
@@ -33,7 +32,6 @@ class Wishlist extends React.Component{
 
                     text={ this.props.text }
                     product={ product }
-
 
                     handleFavorite={this.props.handleFavorite}
                     refreshFavorite={ this.props.refreshFavorite }

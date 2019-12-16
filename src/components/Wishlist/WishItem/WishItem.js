@@ -25,7 +25,6 @@ const ProductImg = styled.img`
 
 const Span = styled.span`
   display: block;
-  // padding-top: 0.5em;
   padding-bottom: 4.5pt;
 `;
 
@@ -63,7 +62,6 @@ class WishItem extends React.Component{
                         friendId={this.props.friendId}
 
                         text={this.props.text}
-                        className="actionBar"
                         product={this.props.product}
 
                         handleFavorite={this.props.handleFavorite}

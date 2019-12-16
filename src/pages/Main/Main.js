@@ -1,4 +1,4 @@
-import React, {Fragment} from 'react';
+import React from 'react';
 import api from './../../api.js';
 import styled from "styled-components";
 import Header from "../../components/Header";
@@ -27,19 +27,24 @@ class Main extends React.Component{
 
     fetchSearchResults = async (query) => {
         try {
-            let myFavorites = await api(`/api/wishlist/get?id=${window.user_id}&uid=${window.user_id}`, 'GET', {id: window.user_id});
+            let myFavorites = await api(
+                `/api/wishlist/get?id=${window.user_id}&uid=${window.user_id}`,
+                'GET',
+                {id: window.user_id}
+            );
             myFavorites = myFavorites.response.wishlist.map(f => f.id);
-            console.log(myFavorites);
 
-            const data_products = await api(`/api/products/suggest?query=${query}`);
+            const data_products = await api(
+                `/api/products/suggest?query=${query}`
+            );
             this.setState({
                 suggestions: data_products.response.suggestions.completions.map((sugg) => sugg.value),
             });
 
-            const data = await api(`/api/products/search?query=${query}&lat=${window.geo_data.lat}&long=${window.geo_data.long}`);
+            const data = await api(
+                `/api/products/search?query=${query}&lat=${window.geo_data.lat}&long=${window.geo_data.long}`
+            );
                 if (data.response.response.items.length) {
-                    console.log(data);
-
                     const products = [];
                     const currency = data.response.response.context.currency.name;
 
@@ -68,7 +73,6 @@ class Main extends React.Component{
                 }
             }
         catch (error) {
-            debugger;
             this.setState({
                 loading: false,
                 message: 'Failed to fetch the data. Please check network'
@@ -90,7 +94,6 @@ class Main extends React.Component{
     };
 
     handleFavorite = id => {
-        console.log('ZHopa')
         const favoritedProducts = this.state.products.map(product => {
             if (product.id === id) product.isFavorite = !product.isFavorite;
             return product;
@@ -103,8 +106,12 @@ class Main extends React.Component{
     renderSearchResults = () => {
         const { products } = this.state;
         if (products.length) {
-            return <Wishlist products={this.state.products} handleFavorite={this.handleFavorite} />
-        }
+            return (
+                <Wishlist
+                    products={this.state.products}
+                    handleFavorite={this.handleFavorite}
+                    />
+            )}
     };
 
     render(){
@@ -120,7 +127,7 @@ class Main extends React.Component{
                     textRight={"Мои друзья"}
                     linkToLeft={"/mypage"}
                 />
-                <Fragment>
+                <>
                     <Label>
                         <span>Вишлист</span>
                         <span className="ec ec-heart-eyes"/>
@@ -138,7 +145,7 @@ class Main extends React.Component{
                     {/*	Result*/}
                     { this.renderSearchResults() }
 
-                </Fragment>
+                </>
             </Content>
         )
     }

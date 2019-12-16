@@ -22,24 +22,6 @@ class App extends React.Component {
     render(){
         return (
             <Router>
-                <div>
-                    <nav>
-                        <ul>
-                            <li>
-                                <Link to="/">Main</Link>
-                            </li>
-                            <li>
-                                <Link to="/friendslist">Search friends</Link>
-                            </li>
-                            <li>
-                                <Link to="/friend">Fiend page</Link>
-                            </li>
-                            <li>
-                                <Link to="/mypage">My page</Link>
-                            </li>
-                        </ul>
-                    </nav>
-
                     <Switch>
                         <Route path="/friendslist">
                             <Friends user={this.props.me} friends={this.props.friends} />
@@ -55,7 +37,6 @@ class App extends React.Component {
                             <Main user={this.props.me} />
                         </Route>
                     </Switch>
-                </div>
             </Router>
         );
     }

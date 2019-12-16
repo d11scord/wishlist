@@ -1,4 +1,4 @@
-import React, {Fragment} from 'react';
+import React from 'react';
 import connect from "@vkontakte/vk-connect";
 import api from './../../api.js';
 import styled from "styled-components";
@@ -21,8 +21,8 @@ class Friends extends React.Component {
         };
     }
 
-    componentDidMount(){
-        connect.sendPromise("VKWebAppCallAPIMethod", {
+    componentDidMount = async () => {
+        const vk_friends = await connect.sendPromise("VKWebAppCallAPIMethod", {
             "method": "friends.get",
             "request_id": "0",
             "params": {
@@ -30,40 +30,36 @@ class Friends extends React.Component {
                 "v":"5.103",
                 "access_token": window.access_token,
             }
-    }).then(data_friends => {
+        })
+
         let friends = [];
-        for (let friend of data_friends.response.items) {
+        for (let friend of vk_friends.response.items) {
             friends.push(friend.id)
         }
 
-        console.log(friends);
-
-        api(`/api/user/friends`, 'POST', {
+        const data_friends = await api(`/api/user/friends`, 'POST', {
             ids: friends,
-        }).then(data_friends => {
-            console.log(data_friends.response.friends)
-
-            let friends = [];
-            for (let friend of data_friends.response.friends) {
-                friends.push(
-                    {
-                        id: friend.id,
-                        img: friend.photo_100,
-                        name: `${friend.first_name} ${friend.last_name}`,
-
-                        _id: friend._id,
-                    }
-                )
-            }
-
-            this.setState({ friends: friends });
-            });
         })
+
+        friends = [];
+        for (let friend of data_friends.response.friends) {
+            friends.push(
+                {
+                    id: friend.id,
+                    img: friend.photo_100,
+                    name: `${friend.first_name} ${friend.last_name}`,
+
+                    _id: friend._id,
+                }
+            )
+        }
+
+        this.setState({ friends: friends });
     }
 
     render(){
         return(
-            <Fragment>
+            <>
                 <Header
                     isHideRight
                     user={this.props.user}
@@ -79,7 +75,7 @@ class Friends extends React.Component {
                     <Input searchPlaceholder={"Начни вводить имя друга"}/>
                     <FriendsList friends={this.state.friends}/>
                 </FriendsWrapper>
-            </Fragment>
+            </>
         )
     }
 }

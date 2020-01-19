@@ -52,7 +52,7 @@ class Main extends React.Component{
                                     id: product.id,
                                     img: product.photo.url,
                                     title: product.name,
-                                    price: `${product.price.avg} ${currency}`,
+                                    price: `${product.price.avg}`,
                                     description: product.description,
 
                                     isFavorite: isFavorite,

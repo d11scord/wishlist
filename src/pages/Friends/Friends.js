@@ -25,7 +25,7 @@ class Friends extends React.Component {
                 "v":"5.103",
                 "access_token": window.access_token,
             }
-        })
+        });
 
         let friends = [];
         for (let friend of vk_friends.response.items) {
@@ -34,7 +34,7 @@ class Friends extends React.Component {
 
         const data_friends = await api(`/api/user/friends`, 'POST', {
             ids: friends,
-        })
+        });
 
         friends = [];
         for (let friend of data_friends.response.friends) {
@@ -50,7 +50,7 @@ class Friends extends React.Component {
         }
 
         this.setState({ friends: friends });
-    }
+    };
 
     render(){
         return(

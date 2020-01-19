@@ -55,7 +55,7 @@ class FriendPage extends React.Component {
         this.setState({
             products: products,
         });
-    }
+    };
 
     refreshFriend = (id, booked_by) => {
         const favoritedProducts = this.state.products.map(product => {
@@ -66,7 +66,7 @@ class FriendPage extends React.Component {
         this.setState({
             products: favoritedProducts
         });
-    }
+    };
 
     render() {
         const { isLoading } = this.state;

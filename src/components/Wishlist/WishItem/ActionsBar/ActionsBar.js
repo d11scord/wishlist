@@ -9,7 +9,7 @@ class ActionsBar extends React.Component {
 
     addFavorite = async () => {
         await api(
-            `/api/wishlist/add?uid=${window.user_id}`,
+            `/api/wishlist/add`,
             'POST', {
             id: this.props.product.id,
             price: this.props.product.price,
